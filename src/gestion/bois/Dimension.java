@@ -12,5 +12,4 @@ public abstract class Dimension {
 		this.largeur=largeur;
 	}
 	
-	
 }
