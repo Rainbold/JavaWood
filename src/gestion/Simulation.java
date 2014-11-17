@@ -1,17 +1,17 @@
 package gestion;
 
-import gestion.*;
-import java.util.Vector;
+import gestion.bois.*;
+import java.util.*;
 
 public class Simulation {
 
-	private Vector<Planche> planches;
-	private Vector<Commande> commandes;
-	
 	public static void main(String[] args) {
+
+		Set<Planche> planches = new HashSet<Planche>();
+		Set<Commande> commandes = new HashSet<Commande>();
 		
-		//planches = Vector();
-		//commandes = Vector();
+		
+		
 		
 		System.out.println("Ferme la !");
 	}
