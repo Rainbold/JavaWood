@@ -1,13 +1,19 @@
 package gestion;
 
+import gestion.*;
+import java.util.Vector;
+
 public class Simulation {
 
-	/**
-	 * @param args
-	 */
+	private Vector<Planche> planches;
+	private Vector<Commande> commandes;
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
+		//planches = Vector();
+		//commandes = Vector();
+		
+		System.out.println("Ferme la !");
 	}
 
 }
