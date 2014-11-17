@@ -8,6 +8,7 @@ public class Decoupe {
 	public Decoupe(int x,int y){
 		this.x=x;
 		this.y=y;
+		
 	}
 	
 }
