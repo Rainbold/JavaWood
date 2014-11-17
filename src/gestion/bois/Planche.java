@@ -9,5 +9,4 @@ public class Planche extends Dimension{
 		this.prix=prix;
 	}
 	
-	
 }
