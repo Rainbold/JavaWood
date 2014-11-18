@@ -19,5 +19,4 @@ public class Planche extends Dimension {
 		}
 		return true;
 	}
-	
 }
