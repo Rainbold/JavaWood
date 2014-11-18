@@ -13,12 +13,12 @@ public class Main {
 
 		System.out.println("Test du logiciel");
 		
-		System.out.print("Création des HashSet : ");
+		System.out.print("Creation des HashSet : ");
 		Set<Planche> planches = new HashSet<Planche>();
 		Set<Commande> commandes = new HashSet<Commande>();
 		System.out.println("OK");
 		
-		System.out.print("Création de deux objets Planche p1 et p2 (id 1 et 2) : ");
+		System.out.print("Creation de deux objets Planche p1 et p2 (id 1 et 2) : ");
 		Planche p1 = new Planche(1, 10, 10, 3);
 		Planche p2 = new Planche(2, 10, 10, 3);
 		System.out.println("OK");
@@ -29,7 +29,7 @@ public class Main {
 		planches.add(p2);
 		System.out.println("OK");
 		
-		System.out.print("Vérification des ids contenus dans la collection planches :");
+		System.out.print("Verification des ids contenus dans la collection planches :");
 		Iterator<Planche> i = planches.iterator();
 		while(i.hasNext()) {
 			 Planche e = i.next();
@@ -37,7 +37,7 @@ public class Main {
 		}
 		System.out.println(" : OK");
 		
-		System.out.print("Création de deux objets Commande c1 et c2 (id 1 et 2) : ");
+		System.out.print("Creation de deux objets Commande c1 et c2 (id 1 et 2) : ");
 		Commande c1 = new Commande(1, 10, 10, 2, false);
 		Commande c2 = new Commande(2, 10, 10, 2, false);
 		System.out.println("OK");
@@ -48,7 +48,7 @@ public class Main {
 		commandes.add(c2);
 		System.out.println("OK");
 		
-		System.out.print("Vérification des ids contenus dans la collection commandes :");
+		System.out.print("Verification des ids contenus dans la collection commandes :");
 		Iterator<Commande> i2 = commandes.iterator();
 		while(i2.hasNext()) {
 			 Commande e = i2.next();
