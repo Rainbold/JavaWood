@@ -23,4 +23,8 @@ public class Planche extends Dimension {
 	public void setPrix(float prix) {
 		this.prix = prix;
 	}
+
+	public float getPrix() {
+		return prix;
+	}	
 }

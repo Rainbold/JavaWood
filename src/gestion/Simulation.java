@@ -12,8 +12,8 @@ public class Simulation {
 
 	public static void main(String[] args) {
 
-		Set<Planche> planches = new HashSet<Planche>();
-		Set<Commande> commandes = new HashSet<Commande>();
+		HashSet<Planche> planches = new HashSet<Planche>();
+		HashSet<Commande> commandes = new HashSet<Commande>();
 		
 		try {
 			Algorithme.XMLParseFournisseur("fournisseurs.xml", planches);
@@ -32,11 +32,8 @@ public class Simulation {
 			 Planche e = i.next();
 			 System.out.print(" " + e.getId());
 		}
-		System.out.println(" : OK");
 		
-		System.out.println(planches.toString());
-		
-		System.out.println("Ferme la !");
+		Algorithme.methode1(commandes, planches);
 	}
 
 }

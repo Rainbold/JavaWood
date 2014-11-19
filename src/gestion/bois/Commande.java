@@ -33,4 +33,22 @@ public class Commande extends Dimension {
 	public Boolean getRejet() {
 		return rejet;
 	}
+
+	public int getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
+
+	public void setRejet(Boolean rejet) {
+		this.rejet = rejet;
+	}
+
+	public void setDecoupes(Vector<Decoupe> decoupes) {
+		this.decoupes = decoupes;
+	}
+	
+	
 }

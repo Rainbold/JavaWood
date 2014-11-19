@@ -5,11 +5,14 @@ import gestion.bois.*;
 import javax.xml.stream.*;
 import javax.xml.stream.events.XMLEvent;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.Iterator;
-
+import java.util.Vector;
 import java.io.*;
 
 
@@ -18,7 +21,72 @@ import java.io.*;
 
 public abstract class Algorithme {
 
-	public void methode1(HashSet<Commande> commandes, HashSet<Planche> planches) {
+	public static void methode1(HashSet<Commande> commandes, HashSet<Planche> planches) {
+		List<Planche> pList = new ArrayList<>(planches); // Transformation du HashSet en liste
+		Collections.sort(pList,new Comparator<Planche>(){ // Tri par implémentation directe de la fonction
+			   @Override
+			   public int compare(final Planche m1, Planche p1) {
+				     if(m1.getPrix() <= p1.getPrix())
+				    	 return -1;
+				     else
+				    	 return 1;
+			     }
+			 } );
+		
+		List<Commande> cList = new ArrayList<>(commandes); // Transformation du HashSet en liste
+		Collections.sort(cList,new Comparator<Commande>(){ // Tri par implémentation directe de la fonction
+			   @Override
+			   public int compare(final Commande m1, Commande p1) {
+				     if(m1.getLongueur() >= p1.getLongueur())
+				    	 return -1;
+				     else
+				    	 return 1;
+			     }
+			 } );
+		
+		int nbPlanches = 1;
+		int y = 0;
+		int quantite = 0;
+		Vector<Decoupe> decoupes;
+		Decoupe d;
+		
+		Iterator<Planche> pIt = pList.iterator();
+		while(pIt.hasNext())
+		{
+			Planche p = pIt.next();	 
+			Iterator<Commande> cIt = cList.iterator();
+			while(cIt.hasNext())
+			{
+				nbPlanches = 1;
+				y = 0;
+				Commande c = cIt.next();
+				decoupes = c.getDecoupes();
+				quantite = c.getQuantite();
+				
+				// Si la longueur ou la largeur de la decoupe est plus grande que la planche, la commande est rejetee
+				if(c.getLongueur() > p.getLongueur() || c.getLargeur() > p.getLargeur())
+				{
+					c.setRejet(true);
+					break; // On sort alors de la boucle et on passe a la commande suivante
+				}
+				else
+				{
+					for(int i=0; i<quantite; i++)
+					{
+						// Si la decoupe depasse de la planche actuelle, on en change
+						if(y > p.getLongueur())
+						{
+							nbPlanches++;
+							y = 0;
+						}
+						
+						//System.out.println("[0, "+y+", "+nbPlanches+", "+c.getId()+"]");
+						decoupes.add(new Decoupe(0, y, nbPlanches));
+						y += c.getLongueur();
+					}
+				}
+			} 
+		}
 	}
 	
 	public static void serialisation(String filename, int longeur, int largeur, HashSet<Commande> commandes) {
