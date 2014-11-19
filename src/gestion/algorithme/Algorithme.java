@@ -15,10 +15,6 @@ import java.util.Iterator;
 import java.util.Vector;
 import java.io.*;
 
-
-
-
-
 public abstract class Algorithme {
 
 	public static void methode1(HashSet<Commande> commandes, HashSet<Planche> planches) {
@@ -89,22 +85,32 @@ public abstract class Algorithme {
 		}
 	}
 	
-	public static void serialisation(String filename, int longeur, int largeur, HashSet<Commande> commandes) {
+	public static void serialisation(String filename, int longeur, int largeur, Set<Commande> commandes) {
 		
-		int marge_x = 20;
-		int marge_y = 20;
+		FileWriter fwriter = null;
+		try{
+		     fwriter = new FileWriter(filename);
+		}catch(IOException ex){
+		    ex.printStackTrace();
+		}
 		
-		int bande = 5;
-		String couleur_bande = "black";
+		int xPlanche = 30; // Distance horizontale des planches 
+		int yPlanche = 30; // Distance verticale de la planche courante
+		int yFuturPlanche = 30;
 		
-		int marge_planche = 20;
-		int marge_titre = 10;
+		String contourTaille = "2px";
+		String contourCouleur = "black";
 		
-		String couleur_planche = "";
+		int interPlancheMarge = 50; // Distance entre 2 planches
+		String plancheCouleur = "lightblue";
 		
-		String couleur_decoupe = "";
+		int titreMarge = 10; // Nombre de pixel au dessus de la planche
+		String textTaille = "14px";
+		String textCouleur = "black";
 		
-		int nb_planche = 0;
+		String decoupeCouleur = "yellow";
+		
+		int nbPlanche = 0;
 		
 		XMLOutputFactory factory = XMLOutputFactory.newInstance();
 		XMLStreamWriter writer;
@@ -112,40 +118,68 @@ public abstract class Algorithme {
 		Iterator<Commande> ic = commandes.iterator();
 		
 		try {
-			writer = factory.createXMLStreamWriter(System.out, "UTF-8");
+			writer = factory.createXMLStreamWriter(fwriter);
 		
 			writer.writeStartDocument("1.0");
 			
 			writer.writeStartElement("svg");
 			writer.writeAttribute("xmlns", "http://www.w3.org/2000/svg");
 			writer.writeAttribute("version", "1.1");
-			//writer.writeAttribute("width", "300");
-			
-			//writer.writeAttribute("height", "200");
 			
 			//TODO title, desc
-/*
+
 			while(ic.hasNext()) {	
 				Commande c = ic.next();
-				commandes.
-				if(c.getRejet()) {
+				
+				if(!c.getRejet()) {
 					Iterator<Decoupe> id = c.getDecoupes().iterator();
 				 
 					while(id.hasNext()) {
 						Decoupe d = id.next();
 						
-						if(d.getIdPlanche() > nb_planche) {
-							nb_planche = d.getIdPlanche();
+						if(d.getIdPlanche() > nbPlanche) {
+							nbPlanche = d.getIdPlanche();
+							yPlanche = yFuturPlanche;
 							
+							// Nouvelle planche du fournisseur
+							
+							// Titre
+							writer.writeStartElement("text");
+							writer.writeAttribute("x", Integer.toString(xPlanche));
+							writer.writeAttribute("y", Integer.toString(yPlanche - titreMarge));
+							writer.writeAttribute("style", "font-size:" + textTaille + ";");
+							writer.writeCharacters("Planche " + nbPlanche);
+							writer.writeEndElement(); // text
+							
+							// Planche
 							writer.writeStartElement("rect");
 							writer.writeAttribute("width", Integer.toString(largeur));
 							writer.writeAttribute("height", Integer.toString(longeur));
-							writer.writeAttribute("x", "300");
-							writer.writeAttribute("y", "300");
-							writer.writeAttribute("fill", "black");
-							
+							writer.writeAttribute("x", Integer.toString(xPlanche));
+							writer.writeAttribute("y", Integer.toString(yPlanche));
+							writer.writeAttribute("style", "fill:" + plancheCouleur + "; stroke:" + contourCouleur + "; stroke-width:" + contourTaille + ";");
 							writer.writeEndElement(); // rect
+							
+							// Position futur d'une planche
+							yFuturPlanche += interPlancheMarge + longeur;
 						}
+						
+						// Decoupe
+						writer.writeStartElement("rect");
+						writer.writeAttribute("width", Integer.toString(c.getLargeur()));
+						writer.writeAttribute("height", Integer.toString(c.getLongueur()));
+						writer.writeAttribute("x", Integer.toString(xPlanche + d.getX()));
+						writer.writeAttribute("y", Integer.toString(yPlanche + d.getY()));
+						writer.writeAttribute("style", "fill:" + decoupeCouleur + "; stroke:" + contourCouleur + "; stroke-width:" + contourTaille + ";");
+						writer.writeEndElement(); // rect
+						
+						// Numero de commande
+						writer.writeStartElement("text");
+						writer.writeAttribute("x", Integer.toString(xPlanche + d.getX() + (c.getLargeur())/2 -5));
+						writer.writeAttribute("y", Integer.toString(yPlanche + d.getY() + (c.getLongueur())/2));
+						writer.writeAttribute("style", "font-size:" + textTaille + ";");
+						writer.writeCharacters(Integer.toString(d.getIdPlanche()));
+						writer.writeEndElement(); // text
 					 
 					}
 				}
@@ -153,32 +187,10 @@ public abstract class Algorithme {
 			writer.writeEndElement(); // svg
 
 			writer.writeEndDocument(); 
-	
+
+			//writer.flush();
+			writer.close();
 	    
-	    writer.writeStartElement("catalog");
-
-	    writer.writeStartElement("book");
-
-	    writer.writeAttribute("id", "1");
-
-	    writer.writeStartElement("code");
-	    writer.writeCharacters("I01");
-	    writer.writeEndElement();
-
-	    writer.writeStartElement("title");
-	    writer.writeCharacters("This is the title");
-	    writer.writeEndElement();
-
-	    writer.writeStartElement("price");
-	    writer.writeCharacters("$2.95");
-	    writer.writeEndElement();
-
-	    writer.writeEndDocument();
-	    
-
-	    writer.flush();
-	    writer.close();
-	    */
 		} catch (XMLStreamException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

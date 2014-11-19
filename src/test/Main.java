@@ -23,7 +23,7 @@ public class Main {
 		System.out.println("OK");
 		
 		System.out.print("Creation de deux objets Planche p1 et p2 (id 1 et 2) : ");
-		Planche p1 = new Planche(1, 10, 10, 3);
+		Planche p1 = new Planche(1, 100, 100, 3);
 		Planche p2 = new Planche(2, 10, 10, 3);
 		System.out.println("OK");
 		 
@@ -78,9 +78,23 @@ public class Main {
 		System.out.println(" : OK");
 		
 
-		System.out.println("Test de la serialisation : ");
-		//Algorithme.serialisation();
+		System.out.println("----------\nTest de la serialisation : ");
+		
+		System.out.print("Création d'une commande avec 3 découpes : ");
+		Commande c5 = new Commande(6, 100, 50, 2, false);
+		Decoupe d1 = new Decoupe(0, 0, 1);
+		Decoupe d2 = new Decoupe(0, 25, 2);
+		Decoupe d3 = new Decoupe(0, 50, 3);
+		c5.getDecoupes().add(d1);
+		c5.getDecoupes().add(d2);
+		c5.getDecoupes().add(d3);
+		commandes.add(c5);
 		System.out.println("OK");
+		
+		Algorithme.serialisation("test.svg", 200, 100, commandes);
+		
+		System.out.println("\nSerialisation : OK");
+		
 		
 		
 		System.out.println("Fin des tests.");

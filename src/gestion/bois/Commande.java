@@ -27,11 +27,11 @@ public class Commande extends Dimension {
 	}
 	
 	public Vector<Decoupe> getDecoupes() {
-		return decoupes;
+		return this.decoupes;
 	}
 	
 	public Boolean getRejet() {
-		return rejet;
+		return this.rejet;
 	}
 
 	public int getQuantite() {
