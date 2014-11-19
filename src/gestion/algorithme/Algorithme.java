@@ -4,6 +4,7 @@ import  gestion.bois.*;
 import javax.xml.stream.*;
 import java.io.*;
 import java.util.HashSet;
+import java.util.Set;
 import javax.xml.stream.events.XMLEvent;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
@@ -75,13 +76,19 @@ public abstract class Algorithme {
 	}
 
 	public String Methode2() {
+		
 		return "";
 	}
 
-	public static String XMLParseFournisseur(String file, HashSet<Planche> planches) throws FileNotFoundException, XMLStreamException {
+	public static void XMLParseFournisseur(String file, Set<Planche> planches) throws FileNotFoundException, XMLStreamException {
 		XMLInputFactory f = XMLInputFactory.newInstance();
 		FileInputStream fis = new FileInputStream(file);
 	    XMLStreamReader r = f.createXMLStreamReader(fis);
+	    
+    	int id = 0;
+    	int longueur = 0;
+    	int largeur = 0;
+    	float prix = 0;
 	   
 	    int i = 0;
 	    
@@ -101,20 +108,88 @@ public abstract class Algorithme {
                 		case "fournisseur":
                 			int attributes = r.getAttributeCount();
                 			for(int index=0; index<attributes; index++) {
-                    			System.out.println(r.getAttributeLocalName(index) + " : " + r.getAttributeValue(index));
+                    			switch(r.getAttributeLocalName(index))
+                    			{
+	                				case "id":
+	                					id = Integer.parseInt(r.getAttributeValue(index));
+	                					break;
+	                				case "longueur":
+	                					longueur = Integer.parseInt(r.getAttributeValue(index));
+	                					break;
+	                				case "largeur":
+	                					largeur = Integer.parseInt(r.getAttributeValue(index));
+	                					break;
+	                				case "prix":
+	                					prix = Float.parseFloat(r.getAttributeValue(index).replace(",", "."));
+	                					break;
+                    			}
                 			}
+                			planches.add(new Planche(id, longueur, largeur, prix));
                 			break;
-                	
                 	}
                 	break;
             }
             
             i++;
 		}
-		
-		return "";
 	}
 
+
+	public static void XMLParseCommande(String file, Set<Commande> commandes) throws FileNotFoundException, XMLStreamException {
+		XMLInputFactory f = XMLInputFactory.newInstance();
+		FileInputStream fis = new FileInputStream(file);
+	    XMLStreamReader r = f.createXMLStreamReader(fis);
+	    
+    	int id = 0;
+    	int longueur = 0;
+    	int largeur = 0;
+    	int quantite = 0;
+	   
+	    int i = 0;
+	    
+		while(r.hasNext()) {
+			int eventType = r.next();
+            switch(eventType) {
+                case XMLEvent.START_ELEMENT:
+                	if(i == 0 && r.getLocalName() != "commandes")
+            		{
+                		// Todo throw an exception
+            			System.err.println("Fichier " + file + " invalide");
+            			System.exit(1);
+            		}
+                	
+                	switch(r.getLocalName())
+                	{
+                		case "commande":
+                			int attributes = r.getAttributeCount();
+                			for(int index=0; index<attributes; index++) {
+                    			switch(r.getAttributeLocalName(index))
+                    			{
+	                				case "id":
+	                					id = Integer.parseInt(r.getAttributeValue(index));
+	                					break;
+	                				case "longueur":
+	                					longueur = Integer.parseInt(r.getAttributeValue(index));
+	                					break;
+	                				case "largeur":
+	                					largeur = Integer.parseInt(r.getAttributeValue(index));
+	                					break;
+	                				case "quantite":
+	                					quantite = Integer.parseInt(r.getAttributeValue(index));
+	                					break;
+                    			}
+                			}
+                			commandes.add(new Commande(id, longueur, largeur, quantite, false));
+                			break;
+                	}
+                	break;
+            }
+            
+            i++;
+		}
+	}
+
+	
 	public void Writer() {
 	}
 }

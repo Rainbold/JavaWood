@@ -12,11 +12,12 @@ public class Simulation {
 
 	public static void main(String[] args) {
 
-		HashSet<Planche> planches = new HashSet<Planche>();
-		HashSet<Commande> commandes = new HashSet<Commande>();
+		Set<Planche> planches = new HashSet<Planche>();
+		Set<Commande> commandes = new HashSet<Commande>();
 		
 		try {
 			Algorithme.XMLParseFournisseur("fournisseurs.xml", planches);
+			Algorithme.XMLParseCommande("commandes.xml", commandes);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -24,6 +25,16 @@ public class Simulation {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		System.out.print("Verification des ids contenus dans la collection planches :");
+		Iterator<Planche> i = planches.iterator();
+		while(i.hasNext()) {
+			 Planche e = i.next();
+			 System.out.print(" " + e.getId());
+		}
+		System.out.println(" : OK");
+		
+		System.out.println(planches.toString());
 		
 		System.out.println("Ferme la !");
 	}

@@ -16,7 +16,20 @@ public abstract class Dimension {
 		return id;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public int hashCode() {
 		return this.id;
 	}
+
+	public void setLongueur(int longueur) {
+		this.longueur = longueur;
+	}
+
+	public void setLargeur(int largeur) {
+		this.largeur = largeur;
+	}
+	
 }
