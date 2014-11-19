@@ -2,21 +2,23 @@ package gestion.algorithme;
 
 import gestion.bois.*;
 
-import javax.xml.stream.XMLOutputFactory;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
-
-import com.sun.xml.internal.bind.v2.runtime.RuntimeUtil.ToStringAdapter;
+import javax.xml.stream.*;
+import javax.xml.stream.events.XMLEvent;
 
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.Set;
 import java.util.Iterator;
 
+import java.io.*;
+
+
+
+
+
 public abstract class Algorithme {
-	
+
 	public void methode1(HashSet<Commande> commandes, HashSet<Planche> planches) {
-		//TODO Généré le fichier xml avec la méthode 1
-		// La sérialisation se fera plus tard
 	}
 	
 	public static void serialisation(String filename, int longeur, int largeur, HashSet<Commande> commandes) {
@@ -114,7 +116,122 @@ public abstract class Algorithme {
 			e.printStackTrace();
 		} 
 	}
-	
-}
 
-// It has to be without public or private
+	public String Methode2() {
+		
+		return "";
+	}
+
+	public static void XMLParseFournisseur(String file, Set<Planche> planches) throws FileNotFoundException, XMLStreamException {
+		XMLInputFactory f = XMLInputFactory.newInstance();
+		FileInputStream fis = new FileInputStream(file);
+	    XMLStreamReader r = f.createXMLStreamReader(fis);
+	    
+    	int id = 0;
+    	int longueur = 0;
+    	int largeur = 0;
+    	float prix = 0;
+	   
+	    int i = 0;
+	    
+		while(r.hasNext()) {
+			int eventType = r.next();
+            switch(eventType) {
+                case XMLEvent.START_ELEMENT:
+                	if(i == 0 && r.getLocalName() != "fournisseurs")
+            		{
+                		// Todo throw an exception
+            			System.err.println("Fichier " + file + " invalide");
+            			System.exit(1);
+            		}
+                	
+                	switch(r.getLocalName())
+                	{
+                		case "fournisseur":
+                			int attributes = r.getAttributeCount();
+                			for(int index=0; index<attributes; index++) {
+                    			switch(r.getAttributeLocalName(index))
+                    			{
+	                				case "id":
+	                					id = Integer.parseInt(r.getAttributeValue(index));
+	                					break;
+	                				case "longueur":
+	                					longueur = Integer.parseInt(r.getAttributeValue(index));
+	                					break;
+	                				case "largeur":
+	                					largeur = Integer.parseInt(r.getAttributeValue(index));
+	                					break;
+	                				case "prix":
+	                					prix = Float.parseFloat(r.getAttributeValue(index).replace(",", "."));
+	                					break;
+                    			}
+                			}
+                			planches.add(new Planche(id, longueur, largeur, prix));
+                			break;
+                	}
+                	break;
+            }
+            
+            i++;
+		}
+	}
+
+
+	public static void XMLParseCommande(String file, Set<Commande> commandes) throws FileNotFoundException, XMLStreamException {
+		XMLInputFactory f = XMLInputFactory.newInstance();
+		FileInputStream fis = new FileInputStream(file);
+	    XMLStreamReader r = f.createXMLStreamReader(fis);
+	    
+    	int id = 0;
+    	int longueur = 0;
+    	int largeur = 0;
+    	int quantite = 0;
+	   
+	    int i = 0;
+	    
+		while(r.hasNext()) {
+			int eventType = r.next();
+            switch(eventType) {
+                case XMLEvent.START_ELEMENT:
+                	if(i == 0 && r.getLocalName() != "commandes")
+            		{
+                		// Todo throw an exception
+            			System.err.println("Fichier " + file + " invalide");
+            			System.exit(1);
+            		}
+                	
+                	switch(r.getLocalName())
+                	{
+                		case "commande":
+                			int attributes = r.getAttributeCount();
+                			for(int index=0; index<attributes; index++) {
+                    			switch(r.getAttributeLocalName(index))
+                    			{
+	                				case "id":
+	                					id = Integer.parseInt(r.getAttributeValue(index));
+	                					break;
+	                				case "longueur":
+	                					longueur = Integer.parseInt(r.getAttributeValue(index));
+	                					break;
+	                				case "largeur":
+	                					largeur = Integer.parseInt(r.getAttributeValue(index));
+	                					break;
+	                				case "quantite":
+	                					quantite = Integer.parseInt(r.getAttributeValue(index));
+	                					break;
+                    			}
+                			}
+                			commandes.add(new Commande(id, longueur, largeur, quantite, false));
+                			break;
+                	}
+                	break;
+            }
+            
+            i++;
+		}
+	}
+
+	
+	public void Writer() {
+	}
+}

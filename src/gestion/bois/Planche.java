@@ -4,7 +4,7 @@ public class Planche extends Dimension {
 
 	private float prix;
 	
-	public Planche(int id, int longueur, int largeur, int prix) {
+	public Planche(int id, int longueur, int largeur, float prix) {
 		super(id, longueur, largeur);
 		this.prix = prix;
 	}
@@ -18,5 +18,9 @@ public class Planche extends Dimension {
 				return false;
 		}
 		return true;
+	}
+
+	public void setPrix(float prix) {
+		this.prix = prix;
 	}
 }

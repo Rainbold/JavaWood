@@ -16,6 +16,10 @@ public abstract class Dimension {
 		return id;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public int hashCode() {
 		return this.id;
 	}

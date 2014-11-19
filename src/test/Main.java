@@ -77,7 +77,8 @@ public class Main {
 		}
 		System.out.println(" : OK");
 		
-		System.out.println("Test de la sérialisation : ");
+
+		System.out.println("Test de la serialisation : ");
 		//Algorithme.serialisation();
 		System.out.println("OK");
 		
