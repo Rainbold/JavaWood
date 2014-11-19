@@ -1,7 +1,7 @@
 package test;
 
+import gestion.algorithme.Algorithme;
 import gestion.bois.*;
-
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -55,6 +55,11 @@ public class Main {
 			 System.out.print(" " + e.getId());
 		}
 		System.out.println(" : OK");
+		
+		System.out.println("Test de la sérialisation : ");
+		Algorithme.serialisation();
+		System.out.println("OK");
+		
 		
 		System.out.println("Fin des tests.");
 
