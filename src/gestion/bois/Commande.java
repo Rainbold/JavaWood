@@ -29,4 +29,8 @@ public class Commande extends Dimension {
 	public Vector<Decoupe> getDecoupes() {
 		return decoupes;
 	}
+	
+	public Boolean getRejet() {
+		return rejet;
+	}
 }

@@ -3,8 +3,12 @@ package test;
 import gestion.algorithme.Algorithme;
 import gestion.bois.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 public class Main {
@@ -38,26 +42,43 @@ public class Main {
 		System.out.println(" : OK");
 		
 		System.out.print("Creation de deux objets Commande c1 et c2 (id 1 et 2) : ");
-		Commande c1 = new Commande(1, 10, 10, 2, false);
-		Commande c2 = new Commande(2, 10, 10, 2, false);
+		Commande c1 = new Commande(4, 10, 10, 2, false);
+		Commande c2 = new Commande(3, 100, 10, 2, false);
+		Commande c3 = new Commande(2, 40, 10, 2, false);
+		Commande c4 = new Commande(5, 50, 10, 2, false);
 		System.out.println("OK");
 		
 		System.out.print("Ajout de c1 deux fois et de c2 dans la collection : ");
 		commandes.add(c1);
 		commandes.add(c1);
 		commandes.add(c2);
+		commandes.add(c3);
+		commandes.add(c4);
 		System.out.println("OK");
 		
+		// POUR MAXIME 
+		List<Commande> l = new ArrayList<>(commandes); // 1/ on tranforme le HashSet en List
+		
+		Collections.sort(l,new Comparator<Commande>(){ // 2/ on le trie en implémentant la fonction directement
+			   @Override
+			   public int compare(final Commande m1, Commande p1) { // si neg doit être devant pos  return -1 (inversement c'est 1)
+				     if(m1.getLongueur() >= p1.getLongueur())
+				    	 return -1;
+				     else
+				    	 return 1;
+			     }
+			 } );
+		
 		System.out.print("Verification des ids contenus dans la collection commandes :");
-		Iterator<Commande> i2 = commandes.iterator();
+		Iterator<Commande> i2 = l.iterator();
 		while(i2.hasNext()) {
 			 Commande e = i2.next();
-			 System.out.print(" " + e.getId());
+			 System.out.print(" " + e.getLongueur());
 		}
 		System.out.println(" : OK");
 		
 		System.out.println("Test de la sérialisation : ");
-		Algorithme.serialisation();
+		//Algorithme.serialisation();
 		System.out.println("OK");
 		
 		

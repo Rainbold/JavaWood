@@ -1,10 +1,14 @@
 package gestion.algorithme;
 
 import gestion.bois.*;
+
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
+import com.sun.xml.internal.bind.v2.runtime.RuntimeUtil.ToStringAdapter;
+
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -19,31 +23,68 @@ public abstract class Algorithme {
 		
 		int marge_x = 20;
 		int marge_y = 20;
-		int bande_noir = 5;
+		
+		int bande = 5;
+		String couleur_bande = "black";
+		
 		int marge_planche = 20;
 		int marge_titre = 10;
 		
+		String couleur_planche = "";
+		
+		String couleur_decoupe = "";
+		
 		int nb_planche = 0;
 		
-		Iterator<Commande> i = commandes.iterator();
-		
-		while(i.hasNext()) {
-			 Commande e = i.next();
-			 
-			 //if(e.)
-			 
-			 
-		}
-		
 		XMLOutputFactory factory = XMLOutputFactory.newInstance();
+		XMLStreamWriter writer;
 		
-	    XMLStreamWriter writer;
+		Iterator<Commande> ic = commandes.iterator();
+		
 		try {
-			writer = factory.createXMLStreamWriter(System.out);
+			writer = factory.createXMLStreamWriter(System.out, "UTF-8");
 		
+			writer.writeStartDocument("1.0");
+			
+			writer.writeStartElement("svg");
+			writer.writeAttribute("xmlns", "http://www.w3.org/2000/svg");
+			writer.writeAttribute("version", "1.1");
+			//writer.writeAttribute("width", "300");
+			
+			//writer.writeAttribute("height", "200");
+			
+			//TODO title, desc
+/*
+			while(ic.hasNext()) {	
+				Commande c = ic.next();
+				commandes.
+				if(c.getRejet()) {
+					Iterator<Decoupe> id = c.getDecoupes().iterator();
+				 
+					while(id.hasNext()) {
+						Decoupe d = id.next();
+						
+						if(d.getIdPlanche() > nb_planche) {
+							nb_planche = d.getIdPlanche();
+							
+							writer.writeStartElement("rect");
+							writer.writeAttribute("width", Integer.toString(largeur));
+							writer.writeAttribute("height", Integer.toString(longeur));
+							writer.writeAttribute("x", "300");
+							writer.writeAttribute("y", "300");
+							writer.writeAttribute("fill", "black");
+							
+							writer.writeEndElement(); // rect
+						}
+					 
+					}
+				}
+			}
+			writer.writeEndElement(); // svg
 
-	    writer.writeStartDocument("1.0");
-
+			writer.writeEndDocument(); 
+	
+	    
 	    writer.writeStartElement("catalog");
 
 	    writer.writeStartElement("book");
@@ -67,11 +108,13 @@ public abstract class Algorithme {
 
 	    writer.flush();
 	    writer.close();
-	    
+	    */
 		} catch (XMLStreamException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} 
 	}
 	
 }
+
+// It has to be without public or private

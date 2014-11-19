@@ -19,4 +19,12 @@ public abstract class Dimension {
 	public int hashCode() {
 		return this.id;
 	}
+
+	public int getLongueur() {
+		return longueur;
+	}
+
+	public int getLargeur() {
+		return largeur;
+	}
 }
