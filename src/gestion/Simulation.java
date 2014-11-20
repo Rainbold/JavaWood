@@ -34,7 +34,6 @@ public class Simulation {
 		}
 		
 		Methode1.process(commandes, planches);
-		Algorithme.serialisation("test.svg", 200, 100, commandes);
 	}
 
 }

@@ -44,120 +44,10 @@ public abstract class Algorithme {
 			     }
 			 } );
 		
-		return cList;
+		return cList; 
 	}
 	
-	public static void serialisation(String filename, int longeur, int largeur, Set<Commande> commandes) {
-		
-		FileWriter fwriter = null;
-		try{
-		     fwriter = new FileWriter(filename);
-		}catch(IOException ex){
-		    ex.printStackTrace();
-		}
-		
-		int xPlanche = 30; // Distance horizontale des planches 
-		int yPlanche = 30; // Distance verticale de la planche courante
-		int yFuturPlanche = 30;
-		
-		String contourTaille = "2px";
-		String contourCouleur = "black";
-		
-		int interPlancheMarge = 50; // Distance entre 2 planches
-		String plancheCouleur = "lightblue";
-		
-		int titreMarge = 10; // Nombre de pixel au dessus de la planche
-		String textTaille = "14px";
-		String textCouleur = "black";
-		
-		String decoupeCouleur = "yellow";
-		
-		int nbPlanche = 0;
-		
-		XMLOutputFactory factory = XMLOutputFactory.newInstance();
-		XMLStreamWriter writer;
-		
-		Iterator<Commande> ic = commandes.iterator();
-		
-		try {
-			writer = factory.createXMLStreamWriter(fwriter);
-		
-			writer.writeStartDocument("1.0");
-			
-			writer.writeStartElement("svg");
-			writer.writeAttribute("xmlns", "http://www.w3.org/2000/svg");
-			writer.writeAttribute("version", "1.1");
-			
-			//TODO title, desc
-
-			while(ic.hasNext()) {	
-				Commande c = ic.next();
-				
-				if(!c.getRejet()) {
-					Iterator<Decoupe> id = c.getDecoupes().iterator();
-				 
-					while(id.hasNext()) {
-						Decoupe d = id.next();
-						
-						if(d.getIdPlanche() > nbPlanche) {
-							nbPlanche = d.getIdPlanche();
-							yPlanche = yFuturPlanche;
-							
-							// Nouvelle planche du fournisseur
-							
-							// Titre
-							writer.writeStartElement("text");
-							writer.writeAttribute("x", Integer.toString(xPlanche));
-							writer.writeAttribute("y", Integer.toString(yPlanche - titreMarge));
-							writer.writeAttribute("style", "font-size:" + textTaille + ";");
-							writer.writeCharacters("Planche " + nbPlanche);
-							writer.writeEndElement(); // text
-							
-							// Planche
-							writer.writeStartElement("rect");
-							writer.writeAttribute("width", Integer.toString(largeur));
-							writer.writeAttribute("height", Integer.toString(longeur));
-							writer.writeAttribute("x", Integer.toString(xPlanche));
-							writer.writeAttribute("y", Integer.toString(yPlanche));
-							writer.writeAttribute("style", "fill:" + plancheCouleur + "; stroke:" + contourCouleur + "; stroke-width:" + contourTaille + ";");
-							writer.writeEndElement(); // rect
-							
-							// Position futur d'une planche
-							yFuturPlanche += interPlancheMarge + longeur;
-						}
-						
-						// Decoupe
-						writer.writeStartElement("rect");
-						writer.writeAttribute("width", Integer.toString(c.getLargeur()));
-						writer.writeAttribute("height", Integer.toString(c.getLongueur()));
-						writer.writeAttribute("x", Integer.toString(xPlanche + d.getX()));
-						writer.writeAttribute("y", Integer.toString(yPlanche + d.getY()));
-						writer.writeAttribute("style", "fill:" + decoupeCouleur + "; stroke:" + contourCouleur + "; stroke-width:" + contourTaille + ";");
-						writer.writeEndElement(); // rect
-						
-						// Numero de commande
-						writer.writeStartElement("text");
-						writer.writeAttribute("x", Integer.toString(xPlanche + d.getX() + (c.getLargeur())/2 -5));
-						writer.writeAttribute("y", Integer.toString(yPlanche + d.getY() + (c.getLongueur())/2));
-						writer.writeAttribute("style", "font-size:" + textTaille + ";");
-						writer.writeCharacters(Integer.toString(d.getIdPlanche()));
-						writer.writeEndElement(); // text
-					 
-					}
-				}
-			}
-			writer.writeEndElement(); // svg
-
-			writer.writeEndDocument(); 
-
-			//writer.flush();
-			writer.close();
-	    
-		} catch (XMLStreamException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-	}
+	
 
 	public static void XMLParseFournisseur(String file, Set<Planche> planches) throws FileNotFoundException, XMLStreamException {
 		XMLInputFactory f = XMLInputFactory.newInstance();
@@ -212,7 +102,6 @@ public abstract class Algorithme {
             i++;
 		}
 	}
-
 
 	public static void XMLParseCommande(String file, Set<Commande> commandes) throws FileNotFoundException, XMLStreamException {
 		XMLInputFactory f = XMLInputFactory.newInstance();
