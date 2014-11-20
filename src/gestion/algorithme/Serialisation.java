@@ -50,10 +50,12 @@ public abstract class Serialisation {
 			writer = factory.createXMLStreamWriter(fwriter);
 		
 			writer.writeStartDocument("1.0");
+			fwriter.write("\n");
 			
 			writer.writeStartElement("svg");
 			writer.writeAttribute("xmlns", "http://www.w3.org/2000/svg");
 			writer.writeAttribute("version", "1.1");
+			fwriter.write("\n");
 			
 			//TODO title, desc
 
@@ -76,6 +78,7 @@ public abstract class Serialisation {
 							writer.writeAttribute("style", "font-size:" + textTaille + ";");
 							writer.writeCharacters("Planche " + nbPlanche);
 							writer.writeEndElement(); // text
+							fwriter.write("\n");
 							
 							// Planche
 							writer.writeStartElement("rect");
@@ -85,6 +88,7 @@ public abstract class Serialisation {
 							writer.writeAttribute("y", Integer.toString(yPlanche));
 							writer.writeAttribute("style", "fill:" + plancheCouleur + "; stroke:" + contourCouleur + "; stroke-width:" + contourTaille + ";");
 							writer.writeEndElement(); // rect
+							fwriter.write("\n");
 							
 							nbPlanche = d.getIdPlanche();
 						}
@@ -97,6 +101,7 @@ public abstract class Serialisation {
 						writer.writeAttribute("y", Integer.toString(yPlanche + d.getY()));
 						writer.writeAttribute("style", "fill:" + decoupeCouleur + "; stroke:" + contourCouleur + "; stroke-width:" + contourTaille + ";");
 						writer.writeEndElement(); // rect
+						fwriter.write("\n");
 						
 						// Numero de commande
 						writer.writeStartElement("text");
@@ -105,12 +110,14 @@ public abstract class Serialisation {
 						writer.writeAttribute("style", "font-size:" + textTaille + ";");
 						writer.writeCharacters(Integer.toString(c.getId()));
 						writer.writeEndElement(); // text
+						fwriter.write("\n");
 					}
 				}
 			}
 			writer.writeEndElement(); // svg
-
-			writer.writeEndDocument(); 
+			fwriter.write("\n");
+			
+			writer.writeEndDocument();
 
 			//writer.flush();
 			writer.close();
