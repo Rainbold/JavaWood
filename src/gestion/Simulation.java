@@ -17,7 +17,7 @@ public class Simulation {
 		
 		try {
 			Algorithme.XMLParseFournisseur("fournisseurs.xml", planches);
-			//Algorithme.XMLParseCommande("commandes.xml", commandes);
+			Algorithme.XMLParseCommande("commandes.xml", commandes);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -34,6 +34,7 @@ public class Simulation {
 		}
 		
 		Algorithme.methode1(commandes, planches);
+		//Algorithme.serialisation("test.svg", 360, 240, commandes);
 	}
 
 }

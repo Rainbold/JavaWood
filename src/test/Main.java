@@ -91,7 +91,7 @@ public class Main {
 		commandes.add(c5);
 		System.out.println("OK");
 		
-		Algorithme.serialisation("test.svg", 200, 100, commandes);
+		//Algorithme.serialisation("test.svg", 200, 100, commandes);
 		
 		System.out.println("\nSerialisation : OK");
 		

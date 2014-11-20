@@ -43,6 +43,7 @@ public abstract class Algorithme {
 		int nbPlanches = 1;
 		int y = 0;
 		int quantite = 0;
+		int numeroFichier = 1;
 		Vector<Decoupe> decoupes;
 		Decoupe d;
 		
@@ -59,6 +60,8 @@ public abstract class Algorithme {
 				decoupes = c.getDecoupes();
 				quantite = c.getQuantite();
 				
+				decoupes.removeAllElements();
+				
 				// Si la longueur ou la largeur de la decoupe est plus grande que la planche, la commande est rejetee
 				if(c.getLongueur() > p.getLongueur() || c.getLargeur() > p.getLargeur())
 				{
@@ -70,7 +73,7 @@ public abstract class Algorithme {
 					for(int i=0; i<quantite; i++)
 					{
 						// Si la decoupe depasse de la planche actuelle, on en change
-						if(y > p.getLongueur())
+						if(( y+c.getLongueur()) > p.getLongueur())
 						{
 							nbPlanches++;
 							y = 0;
@@ -81,11 +84,13 @@ public abstract class Algorithme {
 						y += c.getLongueur();
 					}
 				}
-			} 
+			}
+			Algorithme.serialisation("testMethode1_" + numeroFichier + ".svg", p.getLongueur(), p.getLargeur(), cList);
+			numeroFichier++;
 		}
 	}
 	
-	public static void serialisation(String filename, int longeur, int largeur, Set<Commande> commandes) {
+	public static void serialisation(String filename, int longeur, int largeur, List<Commande> commandes) {
 		
 		FileWriter fwriter = null;
 		try{
@@ -96,12 +101,12 @@ public abstract class Algorithme {
 		
 		int xPlanche = 30; // Distance horizontale des planches 
 		int yPlanche = 30; // Distance verticale de la planche courante
-		int yFuturPlanche = 30;
 		
 		String contourTaille = "2px";
 		String contourCouleur = "black";
 		
-		int interPlancheMarge = 50; // Distance entre 2 planches
+		int interPlancheX = 50; // Distance entre 2 planches sur X
+		int interPlancheY = 50; // Distance entre 2 planches sur Y
 		String plancheCouleur = "lightblue";
 		
 		int titreMarge = 10; // Nombre de pixel au dessus de la planche
@@ -138,14 +143,11 @@ public abstract class Algorithme {
 						Decoupe d = id.next();
 						
 						if(d.getIdPlanche() > nbPlanche) {
-							nbPlanche = d.getIdPlanche();
-							yPlanche = yFuturPlanche;
-							
 							// Nouvelle planche du fournisseur
 							
 							// Titre
 							writer.writeStartElement("text");
-							writer.writeAttribute("x", Integer.toString(xPlanche));
+							writer.writeAttribute("x", Integer.toString(nbPlanche * (largeur+interPlancheX) + xPlanche));
 							writer.writeAttribute("y", Integer.toString(yPlanche - titreMarge));
 							writer.writeAttribute("style", "font-size:" + textTaille + ";");
 							writer.writeCharacters("Planche " + nbPlanche);
@@ -155,32 +157,30 @@ public abstract class Algorithme {
 							writer.writeStartElement("rect");
 							writer.writeAttribute("width", Integer.toString(largeur));
 							writer.writeAttribute("height", Integer.toString(longeur));
-							writer.writeAttribute("x", Integer.toString(xPlanche));
+							writer.writeAttribute("x", Integer.toString(nbPlanche * (largeur+ interPlancheX) + xPlanche));
 							writer.writeAttribute("y", Integer.toString(yPlanche));
 							writer.writeAttribute("style", "fill:" + plancheCouleur + "; stroke:" + contourCouleur + "; stroke-width:" + contourTaille + ";");
 							writer.writeEndElement(); // rect
 							
-							// Position futur d'une planche
-							yFuturPlanche += interPlancheMarge + longeur;
+							nbPlanche = d.getIdPlanche();
 						}
 						
 						// Decoupe
 						writer.writeStartElement("rect");
 						writer.writeAttribute("width", Integer.toString(c.getLargeur()));
 						writer.writeAttribute("height", Integer.toString(c.getLongueur()));
-						writer.writeAttribute("x", Integer.toString(xPlanche + d.getX()));
+						writer.writeAttribute("x", Integer.toString((d.getIdPlanche()-1) * (largeur+interPlancheX) + xPlanche + d.getX()));
 						writer.writeAttribute("y", Integer.toString(yPlanche + d.getY()));
 						writer.writeAttribute("style", "fill:" + decoupeCouleur + "; stroke:" + contourCouleur + "; stroke-width:" + contourTaille + ";");
 						writer.writeEndElement(); // rect
 						
 						// Numero de commande
 						writer.writeStartElement("text");
-						writer.writeAttribute("x", Integer.toString(xPlanche + d.getX() + (c.getLargeur())/2 -5));
+						writer.writeAttribute("x", Integer.toString((d.getIdPlanche()-1) * (largeur+interPlancheX) + xPlanche + d.getX() + (c.getLargeur())/2 -5));
 						writer.writeAttribute("y", Integer.toString(yPlanche + d.getY() + (c.getLongueur())/2));
 						writer.writeAttribute("style", "font-size:" + textTaille + ";");
 						writer.writeCharacters(Integer.toString(d.getIdPlanche()));
 						writer.writeEndElement(); // text
-					 
 					}
 				}
 			}
