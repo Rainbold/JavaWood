@@ -13,7 +13,7 @@ import java.util.Set;
 
 public class Main {
 	
-	public static void main(String[] args) {
+	public void main(String[] args) {
 
 		System.out.println("Test du logiciel");
 		
@@ -59,9 +59,9 @@ public class Main {
 		// POUR MAXIME 
 		List<Commande> l = new ArrayList<>(commandes); // 1/ on tranforme le HashSet en List
 		
-		Collections.sort(l,new Comparator<Commande>(){ // 2/ on le trie en implémentant la fonction directement
+		Collections.sort(l,new Comparator<Commande>(){ // 2/ on le trie en implï¿½mentant la fonction directement
 			   @Override
-			   public int compare(final Commande m1, Commande p1) { // si neg doit être devant pos  return -1 (inversement c'est 1)
+			   public int compare(final Commande m1, Commande p1) { // si neg doit ï¿½tre devant pos  return -1 (inversement c'est 1)
 				     if(m1.getLongueur() >= p1.getLongueur())
 				    	 return -1;
 				     else
@@ -80,7 +80,7 @@ public class Main {
 
 		System.out.println("----------\nTest de la serialisation : ");
 		
-		System.out.print("Création d'une commande avec 3 découpes : ");
+		System.out.print("Crï¿½ation d'une commande avec 3 dï¿½coupes : ");
 		Commande c5 = new Commande(6, 100, 50, 2, false);
 		Decoupe d1 = new Decoupe(0, 0, 1);
 		Decoupe d2 = new Decoupe(0, 25, 2);

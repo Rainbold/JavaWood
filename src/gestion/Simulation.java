@@ -1,6 +1,6 @@
 package gestion;
 
-import gestion.algorithme.Algorithme;
+import gestion.algorithme.*;
 import gestion.bois.*;
 
 import java.io.FileNotFoundException;
@@ -17,7 +17,7 @@ public class Simulation {
 		
 		try {
 			Algorithme.XMLParseFournisseur("fournisseurs.xml", planches);
-			//Algorithme.XMLParseCommande("commandes.xml", commandes);
+			Algorithme.XMLParseCommande("commandes.xml", commandes);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -33,7 +33,7 @@ public class Simulation {
 			 System.out.print(" " + e.getId());
 		}
 		
-		Algorithme.methode1(commandes, planches);
+		Methode1.process(commandes, planches);
 		Algorithme.serialisation("test.svg", 200, 100, commandes);
 	}
 
