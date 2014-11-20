@@ -1,6 +1,6 @@
 package test;
 
-import gestion.algorithme.Algorithme;
+import gestion.algorithme.*;
 import gestion.bois.*;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.Set;
 
 public class Main {
 	
-	public void main(String[] args) {
+	public static void main(String[] args) {
 
 		System.out.println("Test du logiciel");
 		
@@ -91,11 +91,10 @@ public class Main {
 		commandes.add(c5);
 		System.out.println("OK");
 		
-		//Algorithme.serialisation("test.svg", 200, 100, commandes);
+		List<Commande> cList = new ArrayList<>(commandes);
+		Serialisation.svg("test.svg", 200, 100, cList);
 		
 		System.out.println("\nSerialisation : OK");
-		
-		
 		
 		System.out.println("Fin des tests.");
 
