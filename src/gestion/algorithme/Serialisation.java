@@ -103,7 +103,7 @@ public abstract class Serialisation {
 						writer.writeAttribute("x", Integer.toString((d.getIdPlanche()-1) * (largeur+interPlancheX) + xPlanche + d.getX() + (c.getLargeur())/2 -5));
 						writer.writeAttribute("y", Integer.toString(yPlanche + d.getY() + (c.getLongueur())/2));
 						writer.writeAttribute("style", "font-size:" + textTaille + ";");
-						writer.writeCharacters(Integer.toString(d.getIdPlanche()));
+						writer.writeCharacters(Integer.toString(c.getId()));
 						writer.writeEndElement(); // text
 					}
 				}
