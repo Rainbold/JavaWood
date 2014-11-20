@@ -28,12 +28,12 @@ public class Methode1 extends Algorithme {
 		Iterator<Planche> pIt = pList.iterator();
 		while(pIt.hasNext())
 		{
+			nbPlanches = 1;
+			y = 0;
 			Planche p = pIt.next();	 
 			Iterator<Commande> cIt = cList.iterator();
 			while(cIt.hasNext())
 			{
-				nbPlanches = 1;
-				y = 0;
 				Commande c = cIt.next();
 				decoupes = c.getDecoupes();
 				quantite = c.getQuantite();
@@ -57,12 +57,13 @@ public class Methode1 extends Algorithme {
 							y = 0;
 						}
 						
-						System.out.println("[0, "+y+", "+nbPlanches+", "+c.getId()+"]");
-						//decoupes.add(new Decoupe(0, y, nbPlanches));
+						//System.out.println("[0, "+y+", "+nbPlanches+", "+c.getId()+"]");
+						decoupes.add(new Decoupe(0, y, nbPlanches));
 						y += c.getLongueur();
 					}
 				}
 			} 
+			Serialisation.svg("results."+p.getId()+".m1.svg", p.getLongueur(), p.getLargeur(), cList);
 		}
 	}
 }
