@@ -41,6 +41,10 @@ public class Commande extends Dimension {
 	public void setQuantite(int quantite) {
 		this.quantite = quantite;
 	}
+	
+	public void decQuantite(){
+		this.quantite--;
+	}
 
 	public void setRejet(Boolean rejet) {
 		this.rejet = rejet;

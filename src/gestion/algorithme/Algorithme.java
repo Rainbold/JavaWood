@@ -47,7 +47,20 @@ public abstract class Algorithme {
 		return cList; 
 	}
 	
-	
+	public static List<Commande> commandesSortLargeur(HashSet<Commande> commandes) {
+		List<Commande> cList = new ArrayList<>(commandes); // Transformation du HashSet en liste
+		Collections.sort(cList,new Comparator<Commande>(){ // Tri par implémentation directe de la fonction
+			   @Override
+			   public int compare(final Commande m1, Commande p1) {
+				     if(m1.getLargeur() <= p1.getLargeur())
+				    	 return -1;
+				     else
+				    	 return 1;
+			     }
+			 } );
+		
+		return cList; 
+	}
 
 	public static void XMLParseFournisseur(String file, Set<Planche> planches) throws FileNotFoundException, XMLStreamException {
 		XMLInputFactory f = XMLInputFactory.newInstance();
