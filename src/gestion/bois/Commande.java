@@ -8,10 +8,10 @@ public class Commande extends Dimension {
 	protected Boolean rejet;
 	Vector<Decoupe> decoupes;
 	
-	public Commande(int id, int longueur, int largeur, int quantite, Boolean rejet) {
+	public Commande(int id, int longueur, int largeur, int quantite) {
 		super(id, longueur, largeur);
 		this.quantite = quantite;
-		this.rejet = rejet;
+		this.rejet = false;
 		this.decoupes = new Vector<Decoupe>();
 	}
 

@@ -4,17 +4,14 @@ import gestion.bois.Commande;
 import gestion.bois.Decoupe;
 import gestion.bois.Planche;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.Vector;
 
 public class Methode1 extends Algorithme {
 
-	public static void process(HashSet<Commande> commandes, HashSet<Planche> planches) {
+	public static void process(Set<Commande> commandes, Set<Planche> planches) {
 		
 		List<Planche> pList = planchesSort(planches);
 		List<Commande> cList = commandesSort(commandes);
@@ -23,7 +20,6 @@ public class Methode1 extends Algorithme {
 		int y = 0;
 		int quantite = 0;
 		Vector<Decoupe> decoupes;
-		Decoupe d;
 		
 		Iterator<Planche> pIt = pList.iterator();
 		while(pIt.hasNext())
@@ -39,6 +35,7 @@ public class Methode1 extends Algorithme {
 				quantite = c.getQuantite();
 				
 				decoupes.removeAllElements();
+				c.setRejet(false);
 				
 				// Si la longueur ou la largeur de la decoupe est plus grande que la planche, la commande est rejetee
 				if(c.getLongueur() > p.getLongueur() || c.getLargeur() > p.getLargeur())
@@ -58,12 +55,12 @@ public class Methode1 extends Algorithme {
 						}
 						
 						//System.out.println("[0, "+y+", "+nbPlanches+", "+c.getId()+"]");
-						decoupes.add(new Decoupe(0, y, nbPlanches));
+						decoupes.add(new Decoupe(0, y, nbPlanches, c.getId()));
 						y += c.getLongueur();
 					}
 				}
 			} 
-			Serialisation.svg("results."+p.getId()+".m1.svg", p.getLongueur(), p.getLargeur(), cList);
+			Resultat.svg("results."+p.getId()+".m1.svg", p, cList);
 		}
 	}
 }

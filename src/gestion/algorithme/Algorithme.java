@@ -8,16 +8,13 @@ import javax.xml.stream.events.XMLEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.Iterator;
-import java.util.Vector;
 import java.io.*;
 
 public abstract class Algorithme {
 
-	public static List<Planche> planchesSort(HashSet<Planche> planches) {
+	public static List<Planche> planchesSort(Set<Planche> planches) {
 		List<Planche> pList = new ArrayList<>(planches); // Transformation du HashSet en liste
 		Collections.sort(pList,new Comparator<Planche>(){ // Tri par implémentation directe de la fonction
 			   @Override
@@ -32,7 +29,7 @@ public abstract class Algorithme {
 		return pList;
 	}
 
-	public static List<Commande> commandesSort(HashSet<Commande> commandes) {
+	public static List<Commande> commandesSort(Set<Commande> commandes) {
 		List<Commande> cList = new ArrayList<>(commandes); // Transformation du HashSet en liste
 		Collections.sort(cList,new Comparator<Commande>(){ // Tri par implémentation directe de la fonction
 			   @Override
@@ -47,7 +44,7 @@ public abstract class Algorithme {
 		return cList; 
 	}
 	
-	public static List<Commande> commandesSortLargeur(HashSet<Commande> commandes) {
+	public static List<Commande> commandesSortLargeur(Set<Commande> commandes) {
 		List<Commande> cList = new ArrayList<>(commandes); // Transformation du HashSet en liste
 		Collections.sort(cList,new Comparator<Commande>(){ // Tri par implémentation directe de la fonction
 			   @Override
@@ -160,7 +157,7 @@ public abstract class Algorithme {
 	                					break;
                     			}
                 			}
-                			commandes.add(new Commande(id, longueur, largeur, quantite, false));
+                			commandes.add(new Commande(id, longueur, largeur, quantite));
                 			break;
                 	}
                 	break;

@@ -5,11 +5,13 @@ public class Decoupe {
 	int x;
 	int y;
 	int idPlanche;
+	int idCommande;
 	
-	public Decoupe(int x, int y, int idPlanche) {
+	public Decoupe(int x, int y, int idPlanche, int idCommande) {
 		this.x = x;
 		this.y = y;
 		this.idPlanche = idPlanche;
+		this.idCommande = idCommande;
 	}
 
 	public int getX() {
@@ -22,5 +24,9 @@ public class Decoupe {
 
 	public int getIdPlanche() {
 		return idPlanche;
+	}
+
+	public int getIdCommande() {
+		return idCommande;
 	}
 }

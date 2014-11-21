@@ -4,14 +4,14 @@ import gestion.bois.Commande;
 import gestion.bois.Decoupe;
 import gestion.bois.Planche;
 
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.Vector;
 
 public class Methode2 extends Algorithme {
 
-public static void process(HashSet<Commande> commandes, HashSet<Planche> planches) {
+public static void process(Set<Commande> commandes, Set<Planche> planches) {
 		
 		List<Planche> pList = planchesSort(planches);
 		List<Commande> cList = commandesSortLargeur(commandes);
@@ -58,7 +58,7 @@ public static void process(HashSet<Commande> commandes, HashSet<Planche> planche
 				}
 				
 				x = c.getLargeur();
-				decoupes.add(new Decoupe(0, y, idPlanches));
+				decoupes.add(new Decoupe(0, y, idPlanches, c.getId()));
 				
 				while(cIt.hasNext()){
 					
@@ -67,7 +67,7 @@ public static void process(HashSet<Commande> commandes, HashSet<Planche> planche
 					}else{
 						
 						if( p.getLargeur() > x + c2.getLargeur()){
-							decoupes.add(new Decoupe(0, y, idPlanches));
+							decoupes.add(new Decoupe(0, y, idPlanches, c.getId())); // TODO c ou c2 pour le numéro de commande?
 							x += c2.getLargeur();
 							c2.decQuantite();
 							if( c2.getQuantite() == 0)
@@ -81,7 +81,7 @@ public static void process(HashSet<Commande> commandes, HashSet<Planche> planche
 				}
 				
 			} 
-			Serialisation.svg("results."+p.getId()+".m1.svg", p.getLongueur(), p.getLargeur(), cList);
+			Resultat.svg("results."+p.getId()+".m2.svg", p, cList);
 		}
 	}
 }

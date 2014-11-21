@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+><text x="30" y="20" style="font-size:14px;color:black;">Planche 1</text>
+<rect width="300" height="400" x="30" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"></rect>
+<text x="380" y="20" style="font-size:14px;color:black;">Planche 2</text>
+<rect width="300" height="400" x="380" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"></rect>
+<text x="730" y="20" style="font-size:14px;color:black;">Planche 3</text>
+<rect width="300" height="400" x="730" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"></rect>
+<rect width="150" height="250" x="730" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
+<text x="800" y="155" style="font-size:14px;color:black;">2</text>
+<text x="1080" y="20" style="font-size:14px;color:black;">Planche 4</text>
+<rect width="300" height="400" x="1080" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"></rect>
+<rect width="150" height="250" x="1080" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
+<text x="1150" y="155" style="font-size:14px;color:black;">2</text>
+<text x="1430" y="20" style="font-size:14px;color:black;">Planche 5</text>
+<rect width="300" height="400" x="1430" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"></rect>
+<rect width="150" height="250" x="1430" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
+<text x="1500" y="155" style="font-size:14px;color:black;">2</text>
+<rect width="150" height="250" x="30" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
+<text x="100" y="155" style="font-size:14px;color:black;">2</text>
+</svg>
