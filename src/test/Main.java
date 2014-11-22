@@ -53,7 +53,7 @@ public class Main {
 		Commande c2 = new Commande(2, 250, 150, 3);
 		System.out.println("OK");
 		System.out.print("Commande c3 id=3 longueur=250 largeur=250 quantite=3 REJETE: ");
-		Commande c3 = new Commande(2, 250, 150, 3);
+		Commande c3 = new Commande(3, 250, 150, 3);
 		c3.setRejet(true);
 		System.out.println("OK\n");
 		
@@ -103,10 +103,10 @@ public class Main {
 		Methode1.process(commandes, planches);
 		System.out.println("OK\n");
 		
-		System.out.println("----- Test de la methode 2 -----");
-		System.out.print("Methode2.process() -> Results.*.m2.* : ");
-		Methode2.process(commandes, planches);
-		System.out.println("OK\n");
+		//System.out.println("----- Test de la methode 2 -----");
+		//System.out.print("Methode2.process() -> Results.*.m2.* : ");
+		//Methode2.process(commandes, planches);
+		//System.out.println("OK\n");
 						
 		System.out.println("Fin des tests.");
 	}

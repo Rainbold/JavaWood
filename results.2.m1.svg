@@ -13,13 +13,25 @@
 <text x="730" y="20" style="font-size:14px;color:black;">Planche 3</text>
 <rect width="300" height="400" x="730" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"></rect>
 <rect width="150" height="250" x="730" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="800" y="155" style="font-size:14px;color:black;">2</text>
+<text x="800" y="155" style="font-size:14px;color:black;">3</text>
 <text x="1080" y="20" style="font-size:14px;color:black;">Planche 4</text>
 <rect width="300" height="400" x="1080" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"></rect>
 <rect width="150" height="250" x="1080" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="1150" y="155" style="font-size:14px;color:black;">2</text>
+<text x="1150" y="155" style="font-size:14px;color:black;">3</text>
 <text x="1430" y="20" style="font-size:14px;color:black;">Planche 5</text>
 <rect width="300" height="400" x="1430" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"></rect>
 <rect width="150" height="250" x="1430" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="1500" y="155" style="font-size:14px;color:black;">2</text>
+<text x="1500" y="155" style="font-size:14px;color:black;">3</text>
+<text x="1780" y="20" style="font-size:14px;color:black;">Planche 6</text>
+<rect width="300" height="400" x="1780" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"></rect>
+<rect width="150" height="250" x="1780" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
+<text x="1850" y="155" style="font-size:14px;color:black;">2</text>
+<text x="2130" y="20" style="font-size:14px;color:black;">Planche 7</text>
+<rect width="300" height="400" x="2130" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"></rect>
+<rect width="150" height="250" x="2130" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
+<text x="2200" y="155" style="font-size:14px;color:black;">2</text>
+<text x="2480" y="20" style="font-size:14px;color:black;">Planche 8</text>
+<rect width="300" height="400" x="2480" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"></rect>
+<rect width="150" height="250" x="2480" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
+<text x="2550" y="155" style="font-size:14px;color:black;">2</text>
 </svg>

@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
-<simulation fournisseur="2" prix="9.0" rejets="0" algorithme="0"
+<simulation fournisseur="2" prix="9.0" rejets="1" algorithme="0"
     ><rejets
-    ></rejets>
+        ><rejet commande="3"></rejet>
+     </rejets>
      <planches
         ><planche id="1"
             ><decoupe commande="2" x="0" y="0"></decoupe>
