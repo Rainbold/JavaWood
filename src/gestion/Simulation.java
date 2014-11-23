@@ -26,13 +26,6 @@ public class Simulation {
 			e.printStackTrace();
 		}
 		
-		System.out.print("Verification des ids contenus dans la collection planches :");
-		Iterator<Planche> i = planches.iterator();
-		while(i.hasNext()) {
-			 Planche e = i.next();
-			 System.out.print(" " + e.getId());
-		}
-		
 		Methode1.process(commandes, planches);
 		Methode2.process(commandes, planches);
 	}
