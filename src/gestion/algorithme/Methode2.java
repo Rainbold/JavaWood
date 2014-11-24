@@ -114,7 +114,7 @@ public static void process(Set<Commande> commandes, Set<Planche> planches) {
 			} 
 			
 			Resultat.xml("results."+p.getId()+".m2.xml", idPlanches, p, 2, cList);
-			Resultat.svg("results."+p.getId()+".m2.svg", p, cList);
+			Resultat.svg("results."+p.getId()+".m2.svg", idPlanches, p, cList);
 		}
 	}
 }

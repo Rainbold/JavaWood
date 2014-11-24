@@ -33,12 +33,6 @@ public abstract class Resultat {
 		XMLOutputFactory factory = XMLOutputFactory.newInstance();
 		XMLStreamWriter writer;
 		
-		try {
-			fwriter = new FileWriter(filename);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
 		for(int i = 0; i < nbPlanche; i++) {
 			planches[i] = new Vector<Decoupe>();
 		}
@@ -63,69 +57,68 @@ public abstract class Resultat {
 		}
 		
 		try {
+			fwriter = new FileWriter(filename);
 			writer = factory.createXMLStreamWriter(fwriter);
 			
 			writer.writeStartDocument("1.0");
-			fwriter.write("\n");
+			writer.writeCharacters("\n");
 			
 			writer.writeStartElement("simulation");
 			writer.writeAttribute("fournisseur", Integer.toString(planche.getId()));
 			writer.writeAttribute("prix", Float.toString(planche.getPrix() * nbPlanche));
 			writer.writeAttribute("rejets", Integer.toString(nbRejet));
 			writer.writeAttribute("algorithme", Integer.toString(methode));
-			fwriter.write("\n    ");
+			writer.writeCharacters("\n    ");
 		
 			// Rejets
 			writer.writeStartElement("rejets");
-			fwriter.write("\n    ");
+			writer.writeCharacters("\n    ");
 			
 			Iterator<Commande> icrejet = crejet.iterator();
 			
 			while(icrejet.hasNext()) {	
 				Commande c = icrejet.next();
-				fwriter.write("    ");
-				writer.writeStartElement("rejet");	
+				writer.writeCharacters("    ");
+				writer.writeEmptyElement("rejet");
 				writer.writeAttribute("commande", Integer.toString(c.getId()));
-				writer.writeEndElement(); // rejet
-				fwriter.write("\n     ");
+				writer.writeCharacters("\n     ");
 			}
 			
 			writer.writeEndElement(); // rejets
-			fwriter.write("\n     ");
+			writer.writeCharacters("\n     ");
 			
 			// Planches
 			writer.writeStartElement("planches");
-			fwriter.write("\n    ");
+			writer.writeCharacters("\n    ");
 			
 			for(int i = 0; i < nbPlanche; i++) {
 				Iterator<Decoupe> id = planches[i].iterator();
 				
 				// Planche
-				fwriter.write("    ");
+				writer.writeCharacters("    ");
 				writer.writeStartElement("planche");	
 				writer.writeAttribute("id", Integer.toString(i+1));
-				fwriter.write("\n        ");
+				writer.writeCharacters("\n        ");
 				
 				while(id.hasNext()) {
 					Decoupe d = id.next();
 					// Decoupe
-					fwriter.write("    ");
-					writer.writeStartElement("decoupe");	
+					writer.writeCharacters("    ");
+					writer.writeEmptyElement("decoupe");	
 					writer.writeAttribute("commande", Integer.toString(d.getIdCommande()));
 					writer.writeAttribute("x", Integer.toString(d.getX()));
 					writer.writeAttribute("y", Integer.toString(d.getY()));
-					writer.writeEndElement(); // decoupe
-					fwriter.write("\n        ");
+					writer.writeCharacters("\n        ");
 				}
 				writer.writeEndElement(); // planche 
-				fwriter.write("\n    ");
+				writer.writeCharacters("\n    ");
 			}
 			
 			writer.writeEndElement(); // planches
-			fwriter.write("\n");
+			writer.writeCharacters("\n");
 			
 			writer.writeEndElement(); // simulation
-			fwriter.write("\n");
+			writer.writeCharacters("\n");
 			
 			writer.writeEndDocument();
 			
@@ -135,7 +128,7 @@ public abstract class Resultat {
 		}
 	}
 
-	public static void svg(String filename, Planche planche, List<Commande> commandes) {
+	public static void svg(String filename, int nbPlancheMax, Planche planche, List<Commande> commandes) {
 			
 		FileWriter fwriter = null;
 		
@@ -171,12 +164,14 @@ public abstract class Resultat {
 			writer = factory.createXMLStreamWriter(fwriter);
 		
 			writer.writeStartDocument("1.0");
-			fwriter.write("\n");
+			writer.writeCharacters("\n");
 			
 			writer.writeStartElement("svg");
 			writer.writeAttribute("xmlns", "http://www.w3.org/2000/svg");
 			writer.writeAttribute("version", "1.1");
-			fwriter.write("\n");
+			writer.writeAttribute("width", Integer.toString(nbPlancheMax*(xPlanche+largeur)));
+			writer.writeAttribute("height", Integer.toString(yPlanche+longueur));
+			writer.writeCharacters("\n\n    ");
 			
 			//TODO title, desc
 
@@ -200,31 +195,29 @@ public abstract class Resultat {
 								writer.writeAttribute("style", "font-size:" + textTaille + ";color:" + textCouleur + ";");
 								writer.writeCharacters("Planche " + (nbPlanche+1));
 								writer.writeEndElement(); // text
-								fwriter.write("\n");
+								writer.writeCharacters("\n    ");
 								
 								// Planche
-								writer.writeStartElement("rect");
+								writer.writeEmptyElement("rect");
 								writer.writeAttribute("width", Integer.toString(largeur));
 								writer.writeAttribute("height", Integer.toString(longueur));
 								writer.writeAttribute("x", Integer.toString(nbPlanche * (largeur+ interPlancheX) + xPlanche));
 								writer.writeAttribute("y", Integer.toString(yPlanche));
 								writer.writeAttribute("style", "fill:" + plancheCouleur + "; stroke:" + contourCouleur + "; stroke-width:" + contourTaille + ";");
-								writer.writeEndElement(); // rect
-								fwriter.write("\n");
+								writer.writeCharacters("\n    ");
 								
 								nbPlanche++;
 							}
 						}
 						
 						// Decoupe
-						writer.writeStartElement("rect");
+						writer.writeEmptyElement("rect");
 						writer.writeAttribute("width", Integer.toString(c.getLargeur()));
 						writer.writeAttribute("height", Integer.toString(c.getLongueur()));
 						writer.writeAttribute("x", Integer.toString((d.getIdPlanche()-1) * (largeur+interPlancheX) + xPlanche + d.getX()));
 						writer.writeAttribute("y", Integer.toString(yPlanche + d.getY()));
 						writer.writeAttribute("style", "fill:" + decoupeCouleur + "; stroke:" + contourCouleur + "; stroke-width:" + contourTaille + ";");
-						writer.writeEndElement(); // rect
-						fwriter.write("\n");
+						writer.writeCharacters("\n    ");
 						
 						// Numero de commande
 						writer.writeStartElement("text");
@@ -233,12 +226,13 @@ public abstract class Resultat {
 						writer.writeAttribute("style", "font-size:" + textTaille + ";color:" + textCouleur + ";");
 						writer.writeCharacters(Integer.toString(c.getId()));
 						writer.writeEndElement(); // text
-						fwriter.write("\n");
+						writer.writeCharacters("\n    ");
 					}
 				}
 			}
+			writer.writeCharacters("\n");
 			writer.writeEndElement(); // svg
-			fwriter.write("\n");
+			writer.writeCharacters("\n");
 			
 			writer.writeEndDocument();
 

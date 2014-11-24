@@ -59,7 +59,8 @@ public class Methode1 extends Algorithme {
 					}
 				}
 			} 
-			Resultat.svg("results."+p.getId()+".m1.svg", p, cList);
+			Resultat.xml("results."+p.getId()+".m1.xml", nbPlanches, p, 1, cList);
+			Resultat.svg("results."+p.getId()+".m1.svg", nbPlanches, p, cList);
 		}
 	}
 }

@@ -213,6 +213,24 @@ public abstract class Algorithme {
 		}
 	}
 
+	void triPrix() {
+		
+		File f1 = null;
+		File f2 = null;
+		int i = 1;
+		
+		while(true) {
+			
+			f1 = new File("results." + i + ".m1.xml");
+			
+			if(!f1.exists())
+				break;
+			
+			f2 = new File("temp." + i );
+				
+		}
+	}
+
 	public static List<Commande> createCopy(List<Commande> arrSrc) {
 		Iterator<Commande> i = arrSrc.iterator();
 		Commande c;
