@@ -135,7 +135,7 @@ public abstract class Resultat {
 		int longueur = planche.getLongueur();
 		int largeur = planche.getLargeur();
 		
-		int xPlanche = 30; // Distance horizontale des planches 
+		int xPlanche = 50; // Distance horizontale des planches 
 		int yPlanche = 30; // Distance verticale de la planche courante
 		
 		String contourTaille = "2px";
@@ -169,8 +169,8 @@ public abstract class Resultat {
 			writer.writeStartElement("svg");
 			writer.writeAttribute("xmlns", "http://www.w3.org/2000/svg");
 			writer.writeAttribute("version", "1.1");
-			writer.writeAttribute("width", Integer.toString(nbPlancheMax*(xPlanche+largeur)));
-			writer.writeAttribute("height", Integer.toString(yPlanche+longueur));
+			writer.writeAttribute("width", Integer.toString(xPlanche + nbPlancheMax*(interPlancheX+largeur)));
+			writer.writeAttribute("height", Integer.toString(2*yPlanche+longueur));
 			writer.writeCharacters("\n\n    ");
 			
 			//TODO title, desc

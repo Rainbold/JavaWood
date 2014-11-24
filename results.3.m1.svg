@@ -1,57 +1,59 @@
 <?xml version="1.0"?>
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-><text x="30" y="20" style="font-size:14px;color:black;">Planche 1</text>
-<rect width="123" height="123" x="30" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"></rect>
-<rect width="50" height="50" x="30" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="50" y="55" style="font-size:14px;color:black;">1</text>
-<rect width="50" height="50" x="30" y="80" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="50" y="105" style="font-size:14px;color:black;">1</text>
-<text x="203" y="20" style="font-size:14px;color:black;">Planche 2</text>
-<rect width="123" height="123" x="203" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"></rect>
-<rect width="50" height="50" x="203" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="223" y="55" style="font-size:14px;color:black;">1</text>
-<rect width="50" height="50" x="203" y="80" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="223" y="105" style="font-size:14px;color:black;">1</text>
-<text x="376" y="20" style="font-size:14px;color:black;">Planche 3</text>
-<rect width="123" height="123" x="376" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"></rect>
-<rect width="50" height="50" x="376" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="396" y="55" style="font-size:14px;color:black;">1</text>
-<rect width="20" height="30" x="376" y="80" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="381" y="95" style="font-size:14px;color:black;">3</text>
-<rect width="20" height="30" x="376" y="110" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="381" y="125" style="font-size:14px;color:black;">3</text>
-<text x="549" y="20" style="font-size:14px;color:black;">Planche 4</text>
-<rect width="123" height="123" x="549" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"></rect>
-<rect width="20" height="30" x="549" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="554" y="45" style="font-size:14px;color:black;">3</text>
-<rect width="20" height="30" x="549" y="60" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="554" y="75" style="font-size:14px;color:black;">3</text>
-<rect width="20" height="30" x="549" y="90" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="554" y="105" style="font-size:14px;color:black;">3</text>
-<rect width="20" height="30" x="549" y="120" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="554" y="135" style="font-size:14px;color:black;">3</text>
-<text x="722" y="20" style="font-size:14px;color:black;">Planche 5</text>
-<rect width="123" height="123" x="722" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"></rect>
-<rect width="20" height="30" x="722" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="727" y="45" style="font-size:14px;color:black;">3</text>
-<rect width="20" height="30" x="722" y="60" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="727" y="75" style="font-size:14px;color:black;">3</text>
-<rect width="20" height="30" x="722" y="90" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="727" y="105" style="font-size:14px;color:black;">3</text>
-<rect width="20" height="30" x="722" y="120" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="727" y="135" style="font-size:14px;color:black;">3</text>
-<text x="895" y="20" style="font-size:14px;color:black;">Planche 6</text>
-<rect width="123" height="123" x="895" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"></rect>
-<rect width="20" height="30" x="895" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="900" y="45" style="font-size:14px;color:black;">3</text>
-<rect width="20" height="30" x="895" y="60" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="900" y="75" style="font-size:14px;color:black;">3</text>
-<rect width="20" height="30" x="895" y="90" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="900" y="105" style="font-size:14px;color:black;">3</text>
-<rect width="20" height="30" x="895" y="120" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="900" y="135" style="font-size:14px;color:black;">3</text>
-<text x="1068" y="20" style="font-size:14px;color:black;">Planche 7</text>
-<rect width="123" height="123" x="1068" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"></rect>
-<rect width="20" height="30" x="1068" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"></rect>
-<text x="1073" y="45" style="font-size:14px;color:black;">3</text>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1261" height="183">
+
+    <text x="50" y="20" style="font-size:14px;color:black;">Planche 1</text>
+    <rect width="123" height="123" x="50" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"/>
+    <rect width="50" height="50" x="50" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"/>
+    <text x="70" y="55" style="font-size:14px;color:black;">1</text>
+    <rect width="50" height="50" x="50" y="80" style="fill:yellow; stroke:black; stroke-width:2px;"/>
+    <text x="70" y="105" style="font-size:14px;color:black;">1</text>
+    <text x="223" y="20" style="font-size:14px;color:black;">Planche 2</text>
+    <rect width="123" height="123" x="223" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"/>
+    <rect width="50" height="50" x="223" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"/>
+    <text x="243" y="55" style="font-size:14px;color:black;">1</text>
+    <rect width="50" height="50" x="223" y="80" style="fill:yellow; stroke:black; stroke-width:2px;"/>
+    <text x="243" y="105" style="font-size:14px;color:black;">1</text>
+    <text x="396" y="20" style="font-size:14px;color:black;">Planche 3</text>
+    <rect width="123" height="123" x="396" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"/>
+    <rect width="50" height="50" x="396" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"/>
+    <text x="416" y="55" style="font-size:14px;color:black;">1</text>
+    <rect width="20" height="30" x="396" y="80" style="fill:yellow; stroke:black; stroke-width:2px;"/>
+    <text x="401" y="95" style="font-size:14px;color:black;">3</text>
+    <rect width="20" height="30" x="396" y="110" style="fill:yellow; stroke:black; stroke-width:2px;"/>
+    <text x="401" y="125" style="font-size:14px;color:black;">3</text>
+    <text x="569" y="20" style="font-size:14px;color:black;">Planche 4</text>
+    <rect width="123" height="123" x="569" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"/>
+    <rect width="20" height="30" x="569" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"/>
+    <text x="574" y="45" style="font-size:14px;color:black;">3</text>
+    <rect width="20" height="30" x="569" y="60" style="fill:yellow; stroke:black; stroke-width:2px;"/>
+    <text x="574" y="75" style="font-size:14px;color:black;">3</text>
+    <rect width="20" height="30" x="569" y="90" style="fill:yellow; stroke:black; stroke-width:2px;"/>
+    <text x="574" y="105" style="font-size:14px;color:black;">3</text>
+    <rect width="20" height="30" x="569" y="120" style="fill:yellow; stroke:black; stroke-width:2px;"/>
+    <text x="574" y="135" style="font-size:14px;color:black;">3</text>
+    <text x="742" y="20" style="font-size:14px;color:black;">Planche 5</text>
+    <rect width="123" height="123" x="742" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"/>
+    <rect width="20" height="30" x="742" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"/>
+    <text x="747" y="45" style="font-size:14px;color:black;">3</text>
+    <rect width="20" height="30" x="742" y="60" style="fill:yellow; stroke:black; stroke-width:2px;"/>
+    <text x="747" y="75" style="font-size:14px;color:black;">3</text>
+    <rect width="20" height="30" x="742" y="90" style="fill:yellow; stroke:black; stroke-width:2px;"/>
+    <text x="747" y="105" style="font-size:14px;color:black;">3</text>
+    <rect width="20" height="30" x="742" y="120" style="fill:yellow; stroke:black; stroke-width:2px;"/>
+    <text x="747" y="135" style="font-size:14px;color:black;">3</text>
+    <text x="915" y="20" style="font-size:14px;color:black;">Planche 6</text>
+    <rect width="123" height="123" x="915" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"/>
+    <rect width="20" height="30" x="915" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"/>
+    <text x="920" y="45" style="font-size:14px;color:black;">3</text>
+    <rect width="20" height="30" x="915" y="60" style="fill:yellow; stroke:black; stroke-width:2px;"/>
+    <text x="920" y="75" style="font-size:14px;color:black;">3</text>
+    <rect width="20" height="30" x="915" y="90" style="fill:yellow; stroke:black; stroke-width:2px;"/>
+    <text x="920" y="105" style="font-size:14px;color:black;">3</text>
+    <rect width="20" height="30" x="915" y="120" style="fill:yellow; stroke:black; stroke-width:2px;"/>
+    <text x="920" y="135" style="font-size:14px;color:black;">3</text>
+    <text x="1088" y="20" style="font-size:14px;color:black;">Planche 7</text>
+    <rect width="123" height="123" x="1088" y="30" style="fill:lightblue; stroke:black; stroke-width:2px;"/>
+    <rect width="20" height="30" x="1088" y="30" style="fill:yellow; stroke:black; stroke-width:2px;"/>
+    <text x="1093" y="45" style="font-size:14px;color:black;">3</text>
+    
 </svg>
