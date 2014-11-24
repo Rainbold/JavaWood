@@ -8,6 +8,7 @@ import javax.xml.stream.events.XMLEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.io.*;
@@ -34,10 +35,17 @@ public abstract class Algorithme {
 		Collections.sort(cList,new Comparator<Commande>(){ // Tri par implémentation directe de la fonction
 			   @Override
 			   public int compare(final Commande m1, Commande p1) {
-				     if(m1.getLongueur() <= p1.getLongueur())
+				     if(m1.getLongueur() < p1.getLongueur())
+				    	 return 1;
+				     else if(m1.getLongueur() > p1.getLongueur())
 				    	 return -1;
 				     else
-				    	 return 1;
+				     {
+				    	 if(m1.getLargeur() <= p1.getLargeur())
+				    		 return 1;
+				    	 else
+				    		 return -1;
+				     }
 			     }
 			 } );
 		
@@ -49,10 +57,39 @@ public abstract class Algorithme {
 		Collections.sort(cList,new Comparator<Commande>(){ // Tri par implémentation directe de la fonction
 			   @Override
 			   public int compare(final Commande m1, Commande p1) {
-				     if(m1.getLargeur() <= p1.getLargeur())
+				     if(m1.getLargeur() < p1.getLargeur())
+				    	 return 1;
+				     else if(m1.getLargeur() > p1.getLargeur())
 				    	 return -1;
 				     else
+				     {
+				    	 if(m1.getLongueur() <= p1.getLongueur())
+				    		 return 1;
+				    	 else
+				    		 return -1;
+				     }
+			     }
+			 } );
+		
+		return cList; 
+	}
+	
+	public static List<Commande> commandesSortLargeur(List<Commande> commandes) {
+		List<Commande> cList = new ArrayList<>(commandes); // Transformation du HashSet en liste
+		Collections.sort(cList,new Comparator<Commande>(){ // Tri par implémentation directe de la fonction
+			   @Override
+			   public int compare(final Commande m1, Commande p1) {
+				     if(m1.getLargeur() < p1.getLargeur())
 				    	 return 1;
+				     else if(m1.getLargeur() > p1.getLargeur())
+				    	 return -1;
+				     else
+				     {
+				    	 if(m1.getLongueur() <= p1.getLongueur())
+				    		 return 1;
+				    	 else
+				    		 return -1;
+				     }
 			     }
 			 } );
 		
@@ -166,7 +203,7 @@ public abstract class Algorithme {
             i++;
 		}
 	}
-	
+
 	void triPrix() {
 		
 		File f1 = null;
@@ -183,6 +220,20 @@ public abstract class Algorithme {
 			f2 = new File("temp." + i );
 				
 		}
+	}
+
+	public static List<Commande> createCopy(List<Commande> arrSrc) {
+		Iterator<Commande> i = arrSrc.iterator();
+		Commande c;
 		
+		List<Commande> arrDest = new ArrayList<Commande>();
+		
+		while(i.hasNext())
+		{
+			c = i.next();
+			arrDest.add(new Commande(c.getId(), c.getLongueur(), c.getLargeur(), c.getQuantite()));
+		}
+		
+		return arrDest;
 	}
 }

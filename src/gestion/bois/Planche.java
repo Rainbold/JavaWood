@@ -1,8 +1,11 @@
 package gestion.bois;
 
+import java.util.Vector;
+
 public class Planche extends Dimension {
 
 	private float prix;
+	Vector<Decoupe> decoupes;
 	
 	public Planche(int id, int longueur, int largeur, float prix) {
 		super(id, longueur, largeur);
@@ -27,4 +30,12 @@ public class Planche extends Dimension {
 	public float getPrix() {
 		return prix;
 	}	
+
+	public Vector<Decoupe> getDecoupes() {
+		return this.decoupes;
+	}
+
+	public void setDecoupes(Vector<Decoupe> decoupes) {
+		this.decoupes = decoupes;
+	}
 }
