@@ -123,6 +123,7 @@ public abstract class Resultat {
 			writer.writeEndDocument();
 			
 			writer.close();
+			fwriter.close();
 		} catch (XMLStreamException | IOException e) {
 			e.printStackTrace();
 		}
@@ -237,7 +238,7 @@ public abstract class Resultat {
 			writer.writeEndDocument();
 
 			writer.close();
-	    
+			fwriter.close();
 		} catch (XMLStreamException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

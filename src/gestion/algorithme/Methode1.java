@@ -20,6 +20,7 @@ public class Methode1 extends Algorithme {
 		int y = 0;
 		int quantite = 0;
 		Vector<Decoupe> decoupes;
+		int fichier = 1;
 		
 		Iterator<Planche> pIt = pList.iterator();
 		while(pIt.hasNext())
@@ -28,7 +29,6 @@ public class Methode1 extends Algorithme {
 			y = 0;
 			Planche p = pIt.next();	 
 			Iterator<Commande> cIt = cList.iterator();
-			int fichier = 1;
 			while(cIt.hasNext())
 			{
 				Commande c = cIt.next();

@@ -24,7 +24,6 @@ public class Simulation {
 		}
 		Methode1.process(commandes, planches);
 		Methode2.process(commandes, planches);
-		//Algorithme.sortPrix(planches.size());
+		Algorithme.sortPrix(planches.size());
 	}
-
 }

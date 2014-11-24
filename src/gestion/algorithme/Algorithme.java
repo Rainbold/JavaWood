@@ -227,9 +227,9 @@ public abstract class Algorithme {
 		for(int i = 0; i < 2 * nbPlanches; i++) {
 			
 			if(i < nbPlanches)
-				f1 = new File("results.nt" + (i+1) + ".m1.xml");
+				f1 = new File("results.nt." + (i+1) + ".m1.xml");
 			else
-				f1 = new File("results.nt" + (i+1-nbPlanches) + ".m2.xml");
+				f1 = new File("results.nt." + (i+1-nbPlanches) + ".m2.xml");
 			
 			if(f1.exists()) {
 				try {
@@ -274,30 +274,24 @@ public abstract class Algorithme {
 		
 		for(int i = 0; i < nbPlanches; i++) {
 			if(prixM1[i][1] >= 0) {
-				File t1 = new File("results.nt." + (Math.round(prixM1[i][0]+1)) + ".m1.xml");
-				File t2 = new File("results." + (i+1) + ".m1.xml");
-				try {
-					Files.copy(t1.toPath(), t2.toPath());
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				//t1.deleteOnExit();
+				f1 = new File("results.nt." + (Math.round(prixM1[i][0]+1)) + ".m1.xml");
+				f1.deleteOnExit();
+				f1.renameTo(new File("results." + (i+1) + ".m1.xml"));
+				f1 = new File("results.nt." + (Math.round(prixM1[i][0]+1)) + ".m1.svg");
+				f1.deleteOnExit();
+				f1.renameTo(new File("results." + (i+1) + ".m1.svg"));
 			}
-		}
-		for(int i = 0; i < nbPlanches; i++) {
 			if(prixM2[i][1] >= 0) {
-				File t1 = new File("results.nt." + (Math.round(prixM2[i][0]+1)) + ".m2.xml");
-				File t2 = new File("results." + (i+1) + ".m2.xml");
-				try {
-					Files.copy(t1.toPath(), t2.toPath());
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				//t1.deleteOnExit();
+				f1 = new File("results.nt." + (Math.round(prixM2[i][0]+1)) + ".m2.xml");
+				f1.deleteOnExit();
+				f1.renameTo(new File("results." + (i+1) + ".m2.xml"));
+				f1 = new File("results.nt." + (Math.round(prixM2[i][0]+1)) + ".m2.svg");
+				f1.deleteOnExit();
+				f1.renameTo(new File("results." + (i+1) + ".m2.svg"));
 			}
 		}
 	}
-
+	
 	public static List<Commande> createCopy(List<Commande> arrSrc) {
 		Iterator<Commande> i = arrSrc.iterator();
 		Commande c;
