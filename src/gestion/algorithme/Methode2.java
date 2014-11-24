@@ -47,11 +47,11 @@ public static void process(Set<Commande> commandes, Set<Planche> planches) {
 			cIt = cList.iterator();
 			c = new Commande(-1, -1, -1, -1);
 			
-			while(cIt.hasNext() || c.getQuantite() > 0)
+			while(cIt.hasNext() || (c.getQuantite() > 0 && !c.getRejet()) )
 			{	
 				quantite = c.getQuantite();
 
-				if(quantite <= 0)
+				if(quantite <= 0 || c.getRejet())
 				{
 					c = cIt.next();
 				}
@@ -60,7 +60,6 @@ public static void process(Set<Commande> commandes, Set<Planche> planches) {
 					if(c.getLongueur() > p.getLongueur() || c.getLargeur() > p.getLargeur())
 					{
 						c.setRejet(true);
-						break; 
 					}
 					else
 					{
@@ -73,6 +72,7 @@ public static void process(Set<Commande> commandes, Set<Planche> planches) {
 						
 						// On ajoute aux decoupes celle se trouvant sur le bord gauche de la planche
 
+						System.out.println(x+" "+y+" "+idPlanches+" "+c.getId());
 						c.getDecoupes().add(new Decoupe(x, y, idPlanches, c.getId()));
 						c.decQuantite();
 						x = c.getLargeur();
@@ -83,13 +83,15 @@ public static void process(Set<Commande> commandes, Set<Planche> planches) {
 						while(cItAux.hasNext()) {
 							cAux = cItAux.next();
 							quantite = cAux.getQuantite();
-							if(quantite <= 0)
+							if(quantite <= 0  || cAux.getRejet())
 								continue;
 							
 							for(int j=0; j<quantite; j++)
+							{
 								if( cAux.getLongueur() <= c.getLongueur() )
 								{
 									if( p.getLargeur() > x + cAux.getLargeur()){
+										System.out.println(x+" "+y+" "+idPlanches+" "+cAux.getId());
 										cAux.getDecoupes().add(new Decoupe(x, y, idPlanches, cAux.getId()));
 										x += cAux.getLargeur();
 										cAux.decQuantite();
@@ -103,14 +105,15 @@ public static void process(Set<Commande> commandes, Set<Planche> planches) {
 								{
 									break;
 								}
+							}
 						}
 						
 						x = 0;
 						y += c.getLongueur();
 					}
-				
-				
 			} 
+			
+			Resultat.xml("results."+p.getId()+".m2.xml", idPlanches, p, 2, cList);
 			Resultat.svg("results."+p.getId()+".m2.svg", p, cList);
 		}
 	}

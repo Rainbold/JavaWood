@@ -41,7 +41,6 @@ public class Methode1 extends Algorithme {
 				if(c.getLongueur() > p.getLongueur() || c.getLargeur() > p.getLargeur())
 				{
 					c.setRejet(true);
-					break; // On sort alors de la boucle et on passe a la commande suivante
 				}
 				else
 				{

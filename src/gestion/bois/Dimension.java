@@ -8,8 +8,19 @@ public abstract class Dimension {
 	
 	public Dimension(int id, int longueur, int largeur) {
 		this.id = id;
-		this.longueur = longueur;
-		this.largeur = largeur;
+		
+		// Si la largeur est plus grande que la longueur, alors on inverse les dimensions
+		if(largeur > longueur)
+		{
+			this.longueur = largeur;
+			this.largeur = longueur;
+		} 
+		else
+		{
+			this.longueur = longueur;
+			this.largeur = largeur;
+		}
+		
 	}
 	
 	public int getId() {

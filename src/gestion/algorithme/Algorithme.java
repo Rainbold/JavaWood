@@ -161,6 +161,7 @@ public abstract class Algorithme {
     	int quantite = 0;
 	   
 	    int i = 0;
+	    int count = 0;
 	    
 		while(r.hasNext()) {
 			int eventType = r.next();
@@ -173,6 +174,8 @@ public abstract class Algorithme {
             			System.exit(1);
             		}
                 	
+                	count = 0;
+                	
                 	switch(r.getLocalName())
                 	{
                 		case "commande":
@@ -181,20 +184,26 @@ public abstract class Algorithme {
                     			switch(r.getAttributeLocalName(index))
                     			{
 	                				case "id":
+	                					count++;
 	                					id = Integer.parseInt(r.getAttributeValue(index));
 	                					break;
 	                				case "longueur":
+	                					count++;
 	                					longueur = Integer.parseInt(r.getAttributeValue(index));
 	                					break;
 	                				case "largeur":
+	                					count++;
 	                					largeur = Integer.parseInt(r.getAttributeValue(index));
 	                					break;
 	                				case "quantite":
+	                					count++;
 	                					quantite = Integer.parseInt(r.getAttributeValue(index));
 	                					break;
                     			}
                 			}
-                			commandes.add(new Commande(id, longueur, largeur, quantite));
+                			
+                			if(count == 4)
+                				commandes.add(new Commande(id, longueur, largeur, quantite));
                 			break;
                 	}
                 	break;

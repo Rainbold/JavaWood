@@ -82,7 +82,7 @@ public abstract class Resultat {
 			Iterator<Commande> icrejet = crejet.iterator();
 			
 			while(icrejet.hasNext()) {	
-				Commande c = ic.next();
+				Commande c = icrejet.next();
 				fwriter.write("    ");
 				writer.writeStartElement("rejet");	
 				writer.writeAttribute("commande", Integer.toString(c.getId()));

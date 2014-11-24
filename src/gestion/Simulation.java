@@ -18,10 +18,7 @@ public class Simulation {
 		try {
 			Algorithme.XMLParseFournisseur("fournisseurs.xml", planches);
 			Algorithme.XMLParseCommande("commandes.xml", commandes);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (XMLStreamException e) {
+		} catch (FileNotFoundException | XMLStreamException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
