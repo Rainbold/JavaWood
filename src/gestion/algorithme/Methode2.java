@@ -56,7 +56,8 @@ public static void process(Set<Commande> commandes, Set<Planche> planches) {
 				{
 					c = cIt.next();
 				}
-				
+				else
+				{
 					// Si la decoupe est plus large ou plus longue que la planche, la commande est rejetee
 					if(c.getLongueur() > p.getLongueur() || c.getLargeur() > p.getLargeur())
 					{
@@ -73,7 +74,8 @@ public static void process(Set<Commande> commandes, Set<Planche> planches) {
 						
 						// On ajoute aux decoupes celle se trouvant sur le bord gauche de la planche
 
-						//System.out.println(x+" "+y+" "+idPlanches+" "+c.getId());
+						//System.out.println(x+" "+y+" "+idPlanches+" "+c.getId()+" "+c.getQuantite());
+
 						c.getDecoupes().add(new Decoupe(x, y, idPlanches, c.getId()));
 						c.decQuantite();
 						x = c.getLargeur();
@@ -84,7 +86,7 @@ public static void process(Set<Commande> commandes, Set<Planche> planches) {
 						while(cItAux.hasNext()) {
 							cAux = cItAux.next();
 							quantite = cAux.getQuantite();
-							if(quantite <= 0  || cAux.getRejet())
+							if(quantite <= 0 || cAux.getRejet())
 								continue;
 							
 							for(int j=0; j<quantite; j++)
@@ -92,7 +94,9 @@ public static void process(Set<Commande> commandes, Set<Planche> planches) {
 								if( cAux.getLongueur() <= c.getLongueur() )
 								{
 									if( p.getLargeur() > x + cAux.getLargeur()){
-										//System.out.println(x+" "+y+" "+idPlanches+" "+cAux.getId());
+
+										//System.out.println(x+" "+y+" "+idPlanches+" "+cAux.getId()+" "+cAux.getQuantite());
+
 										cAux.getDecoupes().add(new Decoupe(x, y, idPlanches, cAux.getId()));
 										x += cAux.getLargeur();
 										cAux.decQuantite();
@@ -112,6 +116,7 @@ public static void process(Set<Commande> commandes, Set<Planche> planches) {
 						x = 0;
 						y += c.getLongueur();
 					}
+				}
 			} 
 			Resultat.xml("results.nt."+fichier+".m2.xml", idPlanches, p, 2, cList);
 			Resultat.svg("results.nt."+fichier+".m2.svg", idPlanches, p, cList);
