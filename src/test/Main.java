@@ -92,10 +92,10 @@ public class Main {
 		
 		System.out.println("----- Test du resultat SVG -----");
 		System.out.print("Resultat.svg() -> test1.svg : ");
-		Resultat.svg("test1.svg", p1, cList);
+		Resultat.svg("test1.svg", 3, p1, cList);
 		System.out.println("OK");
 		System.out.print("Resultat.svg() -> test1.svg : ");
-		Resultat.svg("test2.svg", p2, cList);
+		Resultat.svg("test2.svg", 3, p2, cList);
 		System.out.println("OK\n");
 		
 		System.out.println("----- Test de la methode 1 -----");
