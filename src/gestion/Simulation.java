@@ -23,7 +23,7 @@ public class Simulation {
 			e.printStackTrace();
 		}
 		
-		Methode1.process(commandes, planches);
+		//Methode1.process(commandes, planches);
 		Methode2.process(commandes, planches);
 	}
 
