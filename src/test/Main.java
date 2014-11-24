@@ -107,6 +107,8 @@ public class Main {
 		System.out.print("Methode2.process() -> Results.*.m2.* : ");
 		Methode2.process(commandes, planches);
 		System.out.println("OK\n");
+		
+		Algorithme.sortPrix(3);
 						
 		System.out.println("Fin des tests.");
 	}

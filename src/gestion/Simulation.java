@@ -22,9 +22,9 @@ public class Simulation {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		Methode1.process(commandes, planches);
 		Methode2.process(commandes, planches);
+		//Algorithme.sortPrix(planches.size());
 	}
 
 }

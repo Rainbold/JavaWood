@@ -25,6 +25,7 @@ public static void process(Set<Commande> commandes, Set<Planche> planches) {
 		int y = 0;
 		int x = 0;
 		int quantite = 0;
+		int fichier = 1;
 
 		Decoupe d;
 		Planche p;
@@ -72,7 +73,7 @@ public static void process(Set<Commande> commandes, Set<Planche> planches) {
 						
 						// On ajoute aux decoupes celle se trouvant sur le bord gauche de la planche
 
-						System.out.println(x+" "+y+" "+idPlanches+" "+c.getId());
+						//System.out.println(x+" "+y+" "+idPlanches+" "+c.getId());
 						c.getDecoupes().add(new Decoupe(x, y, idPlanches, c.getId()));
 						c.decQuantite();
 						x = c.getLargeur();
@@ -91,7 +92,7 @@ public static void process(Set<Commande> commandes, Set<Planche> planches) {
 								if( cAux.getLongueur() <= c.getLongueur() )
 								{
 									if( p.getLargeur() > x + cAux.getLargeur()){
-										System.out.println(x+" "+y+" "+idPlanches+" "+cAux.getId());
+										//System.out.println(x+" "+y+" "+idPlanches+" "+cAux.getId());
 										cAux.getDecoupes().add(new Decoupe(x, y, idPlanches, cAux.getId()));
 										x += cAux.getLargeur();
 										cAux.decQuantite();
@@ -112,9 +113,9 @@ public static void process(Set<Commande> commandes, Set<Planche> planches) {
 						y += c.getLongueur();
 					}
 			} 
-			
-			Resultat.xml("results."+p.getId()+".m2.xml", idPlanches, p, 2, cList);
-			Resultat.svg("results."+p.getId()+".m2.svg", idPlanches, p, cList);
+			Resultat.xml("results.nt."+fichier+".m2.xml", idPlanches, p, 2, cList);
+			Resultat.svg("results.nt."+fichier+".m2.svg", idPlanches, p, cList);
+			fichier++;
 		}
 	}
 }

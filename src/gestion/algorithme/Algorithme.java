@@ -12,6 +12,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.io.*;
+import java.lang.reflect.Array;
+import java.nio.file.Files;
 
 public abstract class Algorithme {
 
@@ -213,21 +215,86 @@ public abstract class Algorithme {
 		}
 	}
 
-	void triPrix() {
+	public static void sortPrix(int nbPlanches) {
 		
 		File f1 = null;
-		File f2 = null;
-		int i = 1;
+		XMLInputFactory f = XMLInputFactory.newInstance();
+		FileInputStream stream;
+	    XMLStreamReader reader;
+	    float prixM1[][] = new float[nbPlanches][2];
+	    float prixM2[][] = new float[nbPlanches][2];
 		
-		while(true) {
+		for(int i = 0; i < 2 * nbPlanches; i++) {
 			
-			f1 = new File("results." + i + ".m1.xml");
+			if(i < nbPlanches)
+				f1 = new File("results.nt" + (i+1) + ".m1.xml");
+			else
+				f1 = new File("results.nt" + (i+1-nbPlanches) + ".m2.xml");
 			
-			if(!f1.exists())
-				break;
-			
-			f2 = new File("temp." + i );
+			if(f1.exists()) {
+				try {
+					stream = new FileInputStream(f1);
 				
+					reader = f.createXMLStreamReader(stream);
+					
+					if(i < nbPlanches) {
+						prixM1[i][0] = i;
+						prixM1[i][1] = -1;
+					}
+					else {
+						prixM2[i-nbPlanches][0] = i-nbPlanches;
+						prixM2[i-nbPlanches][1] = -1;
+					}
+					
+					if(reader.hasNext() && reader.next() == XMLEvent.START_ELEMENT && reader.getLocalName() == "simulation") {
+						if(i < nbPlanches)
+							prixM1[i][1] = Float.parseFloat(reader.getAttributeValue(1));
+						else
+							prixM2[i-nbPlanches][1] = Float.parseFloat(reader.getAttributeValue(1));
+					}
+				
+					reader.close();
+					stream.close();
+				} catch (NumberFormatException | XMLStreamException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		Comparator<float[]> arrayComparator = new java.util.Comparator<float[]>() {
+			@Override
+		    public int compare(float[] a, float[] b) {
+		        return Float.compare(a[1], b[1]);
+		    }
+		};
+		
+		java.util.Arrays.sort(prixM1, arrayComparator);
+		java.util.Arrays.sort(prixM2, arrayComparator);
+		
+		for(int i = 0; i < nbPlanches; i++) {
+			if(prixM1[i][1] >= 0) {
+				File t1 = new File("results.nt." + (Math.round(prixM1[i][0]+1)) + ".m1.xml");
+				File t2 = new File("results." + (i+1) + ".m1.xml");
+				try {
+					Files.copy(t1.toPath(), t2.toPath());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				//t1.deleteOnExit();
+			}
+		}
+		for(int i = 0; i < nbPlanches; i++) {
+			if(prixM2[i][1] >= 0) {
+				File t1 = new File("results.nt." + (Math.round(prixM2[i][0]+1)) + ".m2.xml");
+				File t2 = new File("results." + (i+1) + ".m2.xml");
+				try {
+					Files.copy(t1.toPath(), t2.toPath());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				//t1.deleteOnExit();
+			}
 		}
 	}
 

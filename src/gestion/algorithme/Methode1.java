@@ -28,6 +28,7 @@ public class Methode1 extends Algorithme {
 			y = 0;
 			Planche p = pIt.next();	 
 			Iterator<Commande> cIt = cList.iterator();
+			int fichier = 1;
 			while(cIt.hasNext())
 			{
 				Commande c = cIt.next();
@@ -59,8 +60,9 @@ public class Methode1 extends Algorithme {
 					}
 				}
 			} 
-			Resultat.xml("results."+p.getId()+".m1.xml", nbPlanches, p, 1, cList);
-			Resultat.svg("results."+p.getId()+".m1.svg", nbPlanches, p, cList);
+			Resultat.xml("results.nt."+fichier+".m1.xml", nbPlanches, p, 1, cList);
+			Resultat.svg("results.nt."+fichier+".m1.svg", nbPlanches, p, cList);
+			fichier++;
 		}
 	}
 }
