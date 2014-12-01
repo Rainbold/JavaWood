@@ -108,7 +108,9 @@ public class Main {
 		Methode2.process(commandes, planches);
 		System.out.println("OK\n");
 		
+		System.out.print("Test de la fonction qui trie les fichiers par ordre de prix : ");
 		Algorithme.sortPrix(3);
+		System.out.println("OK\n");
 						
 		System.out.println("Fin des tests.");
 	}

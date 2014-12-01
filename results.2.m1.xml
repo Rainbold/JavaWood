@@ -1,42 +1,43 @@
 <?xml version="1.0"?>
-<simulation fournisseur="3" prix="98.0" rejets="1" algorithme="1">
+<simulation fournisseur="2" prix="15.0" rejets="0" algorithme="1">
     <rejets>
-        <rejet commande="3"/>
-     </rejets>
-     <planches>
+    </rejets>
+    <planches>
         <planche id="1">
             <decoupe commande="2" x="0" y="0"/>
             <decoupe commande="2" x="0" y="50"/>
+            <decoupe commande="2" x="0" y="100"/>
+            <decoupe commande="2" x="0" y="150"/>
+            <decoupe commande="2" x="0" y="200"/>
+            <decoupe commande="3" x="0" y="250"/>
+            <decoupe commande="3" x="0" y="300"/>
+            <decoupe commande="3" x="0" y="350"/>
+            <decoupe commande="3" x="0" y="400"/>
+            <decoupe commande="3" x="0" y="450"/>
         </planche>
         <planche id="2">
-            <decoupe commande="2" x="0" y="0"/>
-            <decoupe commande="2" x="0" y="50"/>
+            <decoupe commande="3" x="0" y="0"/>
+            <decoupe commande="3" x="0" y="50"/>
+            <decoupe commande="3" x="0" y="100"/>
+            <decoupe commande="3" x="0" y="150"/>
+            <decoupe commande="3" x="0" y="200"/>
+            <decoupe commande="1" x="0" y="250"/>
+            <decoupe commande="1" x="0" y="280"/>
+            <decoupe commande="1" x="0" y="310"/>
+            <decoupe commande="1" x="0" y="340"/>
+            <decoupe commande="1" x="0" y="370"/>
+            <decoupe commande="1" x="0" y="400"/>
+            <decoupe commande="1" x="0" y="430"/>
+            <decoupe commande="1" x="0" y="460"/>
         </planche>
         <planche id="3">
-            <decoupe commande="2" x="0" y="0"/>
-            <decoupe commande="1" x="0" y="50"/>
-            <decoupe commande="1" x="0" y="80"/>
-        </planche>
-        <planche id="4">
             <decoupe commande="1" x="0" y="0"/>
             <decoupe commande="1" x="0" y="30"/>
             <decoupe commande="1" x="0" y="60"/>
             <decoupe commande="1" x="0" y="90"/>
-        </planche>
-        <planche id="5">
-            <decoupe commande="1" x="0" y="0"/>
-            <decoupe commande="1" x="0" y="30"/>
-            <decoupe commande="1" x="0" y="60"/>
-            <decoupe commande="1" x="0" y="90"/>
-        </planche>
-        <planche id="6">
-            <decoupe commande="1" x="0" y="0"/>
-            <decoupe commande="1" x="0" y="30"/>
-            <decoupe commande="1" x="0" y="60"/>
-            <decoupe commande="1" x="0" y="90"/>
-        </planche>
-        <planche id="7">
-            <decoupe commande="1" x="0" y="0"/>
+            <decoupe commande="1" x="0" y="120"/>
+            <decoupe commande="1" x="0" y="150"/>
+            <decoupe commande="1" x="0" y="180"/>
         </planche>
     </planches>
 </simulation>

@@ -19,7 +19,7 @@ public abstract class Algorithme {
 
 	public static List<Planche> planchesSort(Set<Planche> planches) {
 		List<Planche> pList = new ArrayList<>(planches); // Transformation du HashSet en liste
-		Collections.sort(pList,new Comparator<Planche>(){ // Tri par implémentation directe de la fonction
+		Collections.sort(pList,new Comparator<Planche>(){ // Tri par implementation directe de la fonction
 			   @Override
 			   public int compare(final Planche m1, Planche p1) {
 				     if(m1.getPrix() <= p1.getPrix())
@@ -34,7 +34,7 @@ public abstract class Algorithme {
 
 	public static List<Commande> commandesSort(Set<Commande> commandes) {
 		List<Commande> cList = new ArrayList<>(commandes); // Transformation du HashSet en liste
-		Collections.sort(cList,new Comparator<Commande>(){ // Tri par implémentation directe de la fonction
+		Collections.sort(cList,new Comparator<Commande>(){ // Tri par implementation directe de la fonction
 			   @Override
 			   public int compare(final Commande m1, Commande p1) {
 				     if(m1.getLongueur() < p1.getLongueur())
@@ -56,7 +56,7 @@ public abstract class Algorithme {
 	
 	public static List<Commande> commandesSortLargeur(Set<Commande> commandes) {
 		List<Commande> cList = new ArrayList<>(commandes); // Transformation du HashSet en liste
-		Collections.sort(cList,new Comparator<Commande>(){ // Tri par implémentation directe de la fonction
+		Collections.sort(cList,new Comparator<Commande>(){ // Tri par implementation directe de la fonction
 			   @Override
 			   public int compare(final Commande m1, Commande p1) {
 				     if(m1.getLargeur() < p1.getLargeur())
@@ -78,7 +78,7 @@ public abstract class Algorithme {
 	
 	public static List<Commande> commandesSortLargeur(List<Commande> commandes) {
 		List<Commande> cList = new ArrayList<>(commandes); // Transformation du HashSet en liste
-		Collections.sort(cList,new Comparator<Commande>(){ // Tri par implémentation directe de la fonction
+		Collections.sort(cList,new Comparator<Commande>(){ // Tri par implementation directe de la fonction
 			   @Override
 			   public int compare(final Commande m1, Commande p1) {
 				     if(m1.getLargeur() < p1.getLargeur())
@@ -171,7 +171,6 @@ public abstract class Algorithme {
                 case XMLEvent.START_ELEMENT:
                 	if(i == 0 && r.getLocalName() != "commandes")
             		{
-                		// Todo throw an exception
             			System.err.println("Fichier " + file + " invalide");
             			System.exit(1);
             		}
@@ -218,13 +217,14 @@ public abstract class Algorithme {
 	public static void sortPrix(int nbPlanches) {
 		
 		File f1 = null;
+		File f2 = null;
 		XMLInputFactory f = XMLInputFactory.newInstance();
 		FileInputStream stream;
 	    XMLStreamReader reader;
 	    float prixM1[][] = new float[nbPlanches][2];
 	    float prixM2[][] = new float[nbPlanches][2];
 		
-		for(int i = 0; i < 2 * nbPlanches; i++) {
+		for(int i = 0; i < 2 * nbPlanches; i++) { // Remplissage des tableaux de prix
 			
 			if(i < nbPlanches)
 				f1 = new File("results.nt." + (i+1) + ".m1.xml");
@@ -262,6 +262,7 @@ public abstract class Algorithme {
 			}
 		}
 		
+		// Fonction de comparaison pour les prix
 		Comparator<float[]> arrayComparator = new java.util.Comparator<float[]>() {
 			@Override
 		    public int compare(float[] a, float[] b) {
@@ -269,25 +270,37 @@ public abstract class Algorithme {
 		    }
 		};
 		
+		// Tri des prix
 		java.util.Arrays.sort(prixM1, arrayComparator);
 		java.util.Arrays.sort(prixM2, arrayComparator);
 		
+		// On renomme les fichiers dans l'ordre des prix
 		for(int i = 0; i < nbPlanches; i++) {
 			if(prixM1[i][1] >= 0) {
+				f2 = new File("results." + (i+1) + ".m1.xml");
+				f2.delete();
 				f1 = new File("results.nt." + (Math.round(prixM1[i][0]+1)) + ".m1.xml");
 				f1.deleteOnExit();
-				f1.renameTo(new File("results." + (i+1) + ".m1.xml"));
+				f1.renameTo(f2);
+				
+				f2 = new File("results." + (i+1) + ".m1.svg");
+				f2.delete();
 				f1 = new File("results.nt." + (Math.round(prixM1[i][0]+1)) + ".m1.svg");
 				f1.deleteOnExit();
-				f1.renameTo(new File("results." + (i+1) + ".m1.svg"));
+				f1.renameTo(f2);
 			}
 			if(prixM2[i][1] >= 0) {
+				f2 = new File("results." + (i+1) + ".m2.xml");
+				f2.delete();
 				f1 = new File("results.nt." + (Math.round(prixM2[i][0]+1)) + ".m2.xml");
 				f1.deleteOnExit();
-				f1.renameTo(new File("results." + (i+1) + ".m2.xml"));
+				f1.renameTo(f2);
+				
+				f2 = new File("results." + (i+1) + ".m2.svg");
+				f2.delete();
 				f1 = new File("results.nt." + (Math.round(prixM2[i][0]+1)) + ".m2.svg");
 				f1.deleteOnExit();
-				f1.renameTo(new File("results." + (i+1) + ".m2.svg"));
+				f1.renameTo(f2);
 			}
 		}
 	}

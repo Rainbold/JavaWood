@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<simulation fournisseur="4" prix="30.0" rejets="2" algorithme="1">
+    <rejets>
+        <rejet commande="2"/>
+        <rejet commande="3"/>
+    </rejets>
+    <planches>
+        <planche id="1">
+            <decoupe commande="1" x="0" y="0"/>
+        </planche>
+        <planche id="2">
+            <decoupe commande="1" x="0" y="0"/>
+        </planche>
+        <planche id="3">
+            <decoupe commande="1" x="0" y="0"/>
+        </planche>
+        <planche id="4">
+            <decoupe commande="1" x="0" y="0"/>
+        </planche>
+        <planche id="5">
+            <decoupe commande="1" x="0" y="0"/>
+        </planche>
+        <planche id="6">
+            <decoupe commande="1" x="0" y="0"/>
+        </planche>
+        <planche id="7">
+            <decoupe commande="1" x="0" y="0"/>
+        </planche>
+        <planche id="8">
+            <decoupe commande="1" x="0" y="0"/>
+        </planche>
+        <planche id="9">
+            <decoupe commande="1" x="0" y="0"/>
+        </planche>
+        <planche id="10">
+            <decoupe commande="1" x="0" y="0"/>
+        </planche>
+        <planche id="11">
+            <decoupe commande="1" x="0" y="0"/>
+        </planche>
+        <planche id="12">
+            <decoupe commande="1" x="0" y="0"/>
+        </planche>
+        <planche id="13">
+            <decoupe commande="1" x="0" y="0"/>
+        </planche>
+        <planche id="14">
+            <decoupe commande="1" x="0" y="0"/>
+        </planche>
+        <planche id="15">
+            <decoupe commande="1" x="0" y="0"/>
+        </planche>
+    </planches>
+</simulation>

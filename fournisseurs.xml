@@ -1,4 +1,7 @@
 <fournisseurs>
+	<fournisseur id="-10" longueur="123" largeur="123" prix="14"/>
 	<fournisseur id="1" longueur="360" largeur="240" prix="3,25"/>
-	<fournisseur id="3" longueur="123" largeur="123" prix="14"/>
+	<fournisseur id="2" longueur="500" largeur="250" prix="5"/>
+	<fournisseur id="3" longueur="250" largeur="300" prix="8"/>
+	<fournisseur id="4" longueur="25" largeur="30" prix="2"/>
 </fournisseurs>

@@ -4,6 +4,7 @@ import gestion.bois.Commande;
 import gestion.bois.Decoupe;
 import gestion.bois.Planche;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,12 +19,13 @@ import javax.xml.stream.XMLStreamWriter;
 
 public abstract class Resultat {
 	
+	// Permet de creer un fichier xml contenant les resultats des methodes
 	public static void xml(String filename, int nbPlanche, Planche planche, int methode, List<Commande> commandes) {
 		
 		int nbRejet = 0;
 		FileWriter fwriter = null;
 		
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings("unchecked") // Necessaire pour faire le tableau de List<Decoupe>
 		List<Decoupe>[] planches = new List[nbPlanche];
 		
 		List<Commande> crejet = new ArrayList<Commande>();
@@ -34,29 +36,31 @@ public abstract class Resultat {
 		XMLStreamWriter writer;
 		
 		for(int i = 0; i < nbPlanche; i++) {
-			planches[i] = new Vector<Decoupe>();
+			// Creation des List dans le tableau de List 
+			planches[i] = new ArrayList<Decoupe>();
 		}
 		
 		ic = commandes.iterator();
 		
+		// Remplissage de planches avec les objets "Decoupe" et remplissage de crejet avec les commandes rejetees
 		while(ic.hasNext()) {
 			Commande c = ic.next();
 			
-			if(!c.getRejet()) {
+			if(!c.getRejet()) { // Commande non rejetee
 				Iterator<Decoupe> id = c.getDecoupes().iterator();
 			 
-				while(id.hasNext()) {
+				while(id.hasNext()) { // Pour chaque decoupe, on ajoute cette derniere dans la bonne planche
 					Decoupe d = id.next();
 					planches[d.getIdPlanche()-1].add(d);
 				}
 			}
-			else {
+			else { // Commande rejetee
 				nbRejet++;
 				crejet.add(c);
 			}
 		}
 		
-		try {
+		try { // Ecriture des resultats
 			fwriter = new FileWriter(filename);
 			writer = factory.createXMLStreamWriter(fwriter);
 			
@@ -81,11 +85,11 @@ public abstract class Resultat {
 				writer.writeCharacters("    ");
 				writer.writeEmptyElement("rejet");
 				writer.writeAttribute("commande", Integer.toString(c.getId()));
-				writer.writeCharacters("\n     ");
+				writer.writeCharacters("\n    ");
 			}
 			
 			writer.writeEndElement(); // rejets
-			writer.writeCharacters("\n     ");
+			writer.writeCharacters("\n    ");
 			
 			// Planches
 			writer.writeStartElement("planches");
@@ -143,7 +147,7 @@ public abstract class Resultat {
 		String contourCouleur = "black";
 		
 		int interPlancheX = 50; // Distance entre 2 planches sur X
-		//int interPlancheY = 50; // Distance entre 2 planches sur Y - not used for the moment
+		
 		String plancheCouleur = "lightblue";
 		
 		int titreMarge = 10; // Nombre de pixel au dessus de la planche
@@ -159,7 +163,7 @@ public abstract class Resultat {
 		
 		Iterator<Commande> ic = commandes.iterator();
 		
-		try {
+		try { // Ecriture des resultats
 			fwriter = new FileWriter(filename);
 			
 			writer = factory.createXMLStreamWriter(fwriter);
@@ -173,8 +177,6 @@ public abstract class Resultat {
 			writer.writeAttribute("width", Integer.toString(xPlanche + nbPlancheMax*(interPlancheX+largeur)));
 			writer.writeAttribute("height", Integer.toString(2*yPlanche+longueur));
 			writer.writeCharacters("\n\n    ");
-			
-			//TODO title, desc
 
 			while(ic.hasNext()) {	
 				Commande c = ic.next();
@@ -240,7 +242,6 @@ public abstract class Resultat {
 			writer.close();
 			fwriter.close();
 		} catch (XMLStreamException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 	}
