@@ -15,7 +15,7 @@ public class Methode1 extends Algorithme {
 		
 		List<Planche> pList = planchesSort(planches);
 		List<Commande> cList = commandesSort(commandes);
-		
+
 		int nbPlanches = 1;
 		int y = 0;
 		int quantite = 0;
@@ -23,12 +23,16 @@ public class Methode1 extends Algorithme {
 		int fichier = 1;
 		
 		Iterator<Planche> pIt = pList.iterator();
+		
+		// Parcourt de la liste de planches
 		while(pIt.hasNext())
 		{
 			nbPlanches = 1;
 			y = 0;
 			Planche p = pIt.next();	 
 			Iterator<Commande> cIt = cList.iterator();
+			
+			// Parcourt de la liste de commandes
 			while(cIt.hasNext())
 			{
 				Commande c = cIt.next();
@@ -54,12 +58,14 @@ public class Methode1 extends Algorithme {
 							y = 0;
 						}
 						
-						//System.out.println("[0, "+y+", "+nbPlanches+", "+c.getId()+"]");
+						// Ajout de la decoupe au vecteur decoupe de la commande
 						decoupes.add(new Decoupe(0, y, nbPlanches, c.getId()));
 						y += c.getLongueur();
 					}
 				}
 			} 
+			
+			// Creation des fichiers xml et svg
 			Resultat.xml("results.nt."+fichier+".m1.xml", nbPlanches, p, 1, cList);
 			Resultat.svg("results.nt."+fichier+".m1.svg", nbPlanches, p, cList);
 			fichier++;

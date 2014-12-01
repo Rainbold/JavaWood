@@ -18,12 +18,14 @@ public class Simulation {
 		
 		System.out.println("Lecture des fichiers...");
 		try {
+			// Converts XML text into an XML document object
 			Algorithme.XMLParseFournisseur("fournisseurs.xml", planches);
 			Algorithme.XMLParseCommande("commandes.xml", commandes);
 		} catch (FileNotFoundException | XMLStreamException e) {
 			e.printStackTrace();
 		}
 		System.out.println("Calculs...");
+
 		Methode1.process(commandes, planches);
 		Methode2.process(commandes, planches);
 		System.out.println("Tri des prix...");
