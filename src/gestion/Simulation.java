@@ -16,12 +16,14 @@ public class Simulation {
 		Set<Commande> commandes = new HashSet<Commande>();
 		
 		try {
+			// Converts XML text into an XML document object
 			Algorithme.XMLParseFournisseur("fournisseurs.xml", planches);
 			Algorithme.XMLParseCommande("commandes.xml", commandes);
 		} catch (FileNotFoundException | XMLStreamException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
+		
 		Methode1.process(commandes, planches);
 		Methode2.process(commandes, planches);
 		Algorithme.sortPrix(planches.size());
