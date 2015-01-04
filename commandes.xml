@@ -1,6 +1,5 @@
 <commandes>
-	<commande id="-4" largeur="150" longueur="150" quantite="2"/>
-	<commande id="1" largeur="30" longueur="20" quantite="15"/>
-	<commande id="2" largeur="50" longueur="50" quantite="5"/>
-	<commande id="3" largeur="50" longueur="15" quantite="10"/>
+	<commande id="1" largeur="30" longueur="30" quantite="10"/>
+	<commande id="2" largeur="125" longueur="75" quantite="5"/>
+	<commande id="3" largeur="240" longueur="110" quantite="4"/>
 </commandes>

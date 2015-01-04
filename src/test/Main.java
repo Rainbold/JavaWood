@@ -45,7 +45,7 @@ public class Main {
 		}
 		System.out.println(" : OK\n");
 		
-		System.out.print("Creation de d'objets Commande : ");
+		System.out.println("Creation d'objets Commande : ");
 		System.out.print("Commande c1 id=1 longueur=200 largeur=100 quantite=3 : ");
 		Commande c1 = new Commande(1, 200, 100, 3);
 		System.out.println("OK");
@@ -57,7 +57,7 @@ public class Main {
 		c3.setRejet(true);
 		System.out.println("OK\n");
 		
-		System.out.print("Creation d'objets Decoupe : ");
+		System.out.println("Creation d'objets Decoupe : ");
 		System.out.print("Decoupe d1 x=0 y=0 idPlanche=1 idCommande=2 : ");
 		Decoupe d1 = new Decoupe(0, 0, 1, 2);
 		System.out.println("OK");

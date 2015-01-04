@@ -8,7 +8,7 @@ import java.util.*;
 
 import javax.xml.stream.XMLStreamException;
 
-public class Simulation {
+public class Devis {
 
 	public static void main(String[] args) {
 		System.out.println("Debut de la simulation");

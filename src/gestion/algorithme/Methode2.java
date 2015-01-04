@@ -5,16 +5,13 @@ import gestion.bois.Decoupe;
 import gestion.bois.Planche;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.HashSet;
-import java.util.Vector;
 
 public class Methode2 extends Algorithme {
 
-public static void process(Set<Commande> commandes, Set<Planche> planches) {
+	public static void process(Set<Commande> commandes, Set<Planche> planches) {
 		
 		List<Planche> pList = planchesSort(planches);
 		
@@ -27,7 +24,6 @@ public static void process(Set<Commande> commandes, Set<Planche> planches) {
 		int quantite = 0;
 		int fichier = 1;
 
-		Decoupe d;
 		Planche p;
 
 		Commande c, cAux;
@@ -73,9 +69,6 @@ public static void process(Set<Commande> commandes, Set<Planche> planches) {
 						}
 						
 						// On ajoute aux decoupes celle se trouvant sur le bord gauche de la planche
-
-						//System.out.println(x+" "+y+" "+idPlanches+" "+c.getId()+" "+c.getQuantite());
-
 						c.getDecoupes().add(new Decoupe(x, y, idPlanches, c.getId()));
 						c.decQuantite();
 						x = c.getLargeur();
@@ -93,10 +86,8 @@ public static void process(Set<Commande> commandes, Set<Planche> planches) {
 							{
 								if( cAux.getLongueur() <= c.getLongueur() )
 								{
-									if( p.getLargeur() > x + cAux.getLargeur()){
-
-										//System.out.println(x+" "+y+" "+idPlanches+" "+cAux.getId()+" "+cAux.getQuantite());
-
+									if( p.getLargeur() > x + cAux.getLargeur())
+									{
 										cAux.getDecoupes().add(new Decoupe(x, y, idPlanches, cAux.getId()));
 										x += cAux.getLargeur();
 										cAux.decQuantite();
@@ -112,7 +103,6 @@ public static void process(Set<Commande> commandes, Set<Planche> planches) {
 								}
 							}
 						}
-						
 						x = 0;
 						y += c.getLongueur();
 					}

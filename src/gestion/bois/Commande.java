@@ -53,6 +53,4 @@ public class Commande extends Dimension {
 	public void setDecoupes(Vector<Decoupe> decoupes) {
 		this.decoupes = decoupes;
 	}
-	
-	
 }
